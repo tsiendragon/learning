@@ -1,8 +1,57 @@
 # 系统学习计划：Linux基础、Python编程、机器学习和深度学习
 
+## 目录
+
+### 阶段 1：Linux 基础入门（1-6周）
+- [1 Linux 基础知识](#1-linux-基础知识)
+  - [1.1 Linux 文件系统](phase1/linux_basics/01_linux_file_system.md)
+  - [1.2 权限管理](phase1/linux_basics/02_permission_management.md)
+  - [1.3 网络基础](phase1/linux_basics/03_network_basics.md)
+  - [1.4 文本编辑器](phase1/linux_basics/04_text_editors.md)
+  - [1.5 Shell 脚本和自动化](phase1/linux_basics/05_shell_scripting.md)
+  - [1.6 Git 版本控制系统](phase1/linux_basics/06_git_version_control.md)
+  - [1.7 常用开发工具](phase1/linux_basics/07_development_tools.md)
+  - [1.8 网络和远程操作](phase1/linux_basics/08_networking_remote_operations.md)
+  - [1.9 编程环境配置](phase1/linux_basics/09_programming_environment.md)
+  - [1.10 性能调优和系统监控](phase1/linux_basics/10_performance_tuning.md)
+  - [1.11 容器和虚拟化](phase1/linux_basics/11_containers_virtualization.md)
+  - [1.12 文件和数据处理](phase1/linux_basics/12_file_data_processing.md)
+
+### 阶段 2：Python 基础（7-8周）
+- [2 Python 基础](#2-python-基础)
+  - [2.1 基本语法](#2.1-基本语法)
+  - [2.2 函数与模块](#2.2-函数与模块)
+  - [2.3 类与对象](#2.3-类与对象)
+  - [2.4 常用库](#2.4-常用库)
+  - [2.5 Python 的最佳实践](#2.5-python-的最佳实践)
+  - [2.6 常用算法与技巧](#2.6-常用算法与技巧)
+
+### 阶段 3：数据分析与机器学习入门（6-8周）
+- [3.1 Python 数据分析](#3.1-python-数据分析)
+  - [数据处理](#数据处理)
+  - [数据可视化](#数据可视化)
+
+- [3.2 机器学习基础](#3.2-机器学习基础)
+  - [机器学习基本概念](#机器学习基本概念)
+  - [常见算法](#常见算法)
+
+### 阶段 4：深度学习基础与进阶（8-10周）
+- [4.1 深度学习基础](#4.1-深度学习基础)
+  - [神经网络基础](#神经网络基础)
+  - [深度学习框架](#深度学习框架)
+
+- [4.2 深度学习进阶](#4.2-深度学习进阶)
+  - [高级模型](#高级模型)
+  - [生成对抗网络](#生成对抗网络gan)
+
+### 阶段 5：综合项目与实践（4-6周）
+- [5.1 项目案例](#项目案例)
+  - [图片分类系统](#图片分类系统)
+  - [文本生成系统](#文本生成系统)
+
 ## **阶段 1：基础知识打牢（4-6周）**
 
-### **1.1 Linux 基础知识**
+### **1. Linux 基础知识**
 #### 学习目标：
 - 理解 Linux 的文件系统结构
 - 掌握常用命令的使用
@@ -11,20 +60,20 @@
 - 熟悉常见的开发工具和环境配置
 
 #### 学习内容：
-#### 1.1.1. **Linux 文件系统：**
+#### 1.1 **Linux 文件系统：**
    - 目录结构：`/etc`, `/var`, `/home`, `/usr` 等
    - 基本文件操作：`ls`, `cd`, `pwd`, `mkdir`, `rm`, `cp`, `mv`
    - 查看磁盘使用情况：`df`, `du`
-#### 1.1.2. **权限管理：**
+#### 1.2 **权限管理：**
    - 用户和用户组管理：`whoami`, `id`, `adduser`, `usermod`
    - 文件权限修改：`chmod`, `chown`
    - 使用 `ls -l` 查看文件权限
-#### 1.1.3. **网络基础：**
+#### 1.3 **网络基础：**
    - 查看网络状态：`ifconfig`, `ping`
    - 文件传输：`scp`, `rsync`
-#### 1.1.4. **文本编辑器：**
+#### 1.4 **文本编辑器：**
    - Vim 的基本操作：插入模式、保存退出、查找替换
-#### 1.1.5. **Shell 脚本和自动化：**
+#### 1.5 **Shell 脚本和自动化：**
    - 编写基本脚本：创建、运行 `.sh` 文件
    - 使用变量、循环和条件语句
    - 示例：
@@ -37,7 +86,7 @@
    - 环境变量：`echo $PATH`, `export VAR=value`
    - 配置 `.bashrc` 或 `.zshrc`
 
-#### **1.1.6 Git 版本控制系统**
+#### 1.6 **Git 版本控制系统**
    - Git 是一个分布式版本控制系统，广泛用于软件开发。
    - 理解 Git 的基本概念和工作流程
    - 掌握常用 Git 命令并应用于项目管理
@@ -93,7 +142,7 @@
 - [Pro Git 电子书](https://git-scm.com/book/zh/v2)
 - [Git 官方文档](https://git-scm.com/doc)
 
-#### 1.1.7. **常用开发工具：**
+#### 1.7 **常用开发工具：**
 
    - 包管理：
      - Ubuntu/Debian 系：`apt-get install`
@@ -104,35 +153,35 @@
    - 日志查看：
      - `tail -f`: 实时查看日志
      - `less`, `grep`: 分析日志内容
-#### 1.1.8. **网络和远程操作：**
+#### 1.8 **网络和远程操作：**
    - 网络管理：
      - 查看网络状态：`ifconfig`, `ping`, `netstat`
    - 文件传输：`scp`, `rsync`
    - 远程操作：
      - SSH：`ssh user@server`
      - 配置无密码登录：生成和配置SSH密钥
-#### 1.1.9. **编程环境配置：**
+#### 1.9 **编程环境配置：**
    - Python 环境：
      - 安装Python和包管理器：`apt-get install python3`, `pip install`
      - 使用虚拟环境：`virtualenv`, `venv`
    - C++/其他语言环境：
      - 安装编译器：`gcc`, `g++`
      - 编译和运行程序：`gcc program.c -o program && ./program`
-#### 1.1.10. **性能调优和系统监控：**
+#### 1.10 **性能调优和系统监控：**
    - 性能监控：
      - `top`, `htop`: 查看CPU和内存使用情况
      - `iotop`: 查看磁盘I/O
    - 系统调优：
      - 检查系统负载：`uptime`
      - 分析内存使用：`free -m`
-#### 1.1.11. **容器和虚拟化（高级）：**
+#### 1.11 **容器和虚拟化（高级）：**
     - Docker 基础：
       - 拉取镜像：`docker pull`
       - 运行容器：`docker run`
       - 查看容器状态：`docker ps`
     - 虚拟机管理：
       - 使用 VirtualBox 或 VMware 运行Linux虚拟机
-#### 1.1.12. **文件和数据处理：**
+#### 1.12 **文件和数据处理：**
     - 文本处理工具：
       - `cat`, `more`, `less`: 查看文件内容
       - `grep`, `awk`, `sed`: 文本搜索与处理
@@ -153,7 +202,7 @@
 
 ---
 
-### **1.2 Python 基础**
+### **2. Python 基础**
 #### 学习目标：
 - 掌握 Python 的基本语法
 - 熟悉 Python 的常用库（如 numpy、pandas、PIL、opencv）
