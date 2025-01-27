@@ -37,13 +37,52 @@ Git 是一个分布式版本控制系统，用于跟踪文件的更改和协作�
 - **`git commit`**：提交更改。
   - `-m`：添加提交信息。
 - **`git push`**：推送本地提交到远程仓库。
+- **`git merge --squash`**：将指定分支的更改合并到当前分支，但不自动创建合并提交。合并的更改会被暂存，用户需要手动创建提交。
 
 ## 实践的例子
-1. 使用 `git init` 初始化一个新的仓库。
-2. 使用 `git clone <repo>` 克隆远程仓库。
-3. 使用 `git add .` 添加所有更改到暂存区。
-4. 使用 `git commit -m "Initial commit"` 提交更改。
-5. 使用 `git push origin main` 推送到远程仓库。
+1. 在 `master` 创建一个分支 `feature/test`：
+   ```bash
+   git checkout master
+   git checkout -b feature/test
+   ```
+
+2. 在 `feature/test` 上进行几个实验性的 commit：
+   ```bash
+   # 修改文件并提交
+   echo "Experiment 1" >> experiment.txt
+   git add experiment.txt
+   git commit -m "Add experiment 1"
+
+   echo "Experiment 2" >> experiment.txt
+   git add experiment.txt
+   git commit -m "Add experiment 2"
+   ```
+
+3. 在 `master` 创建一个正式分支 `feature/a`：
+   ```bash
+   git checkout master
+   git checkout -b feature/a
+   ```
+
+4. 把 `feature/test` 上的工作复制到 `feature/a` 上：
+   ```bash
+   git checkout feature/a
+   git merge --squash feature/test
+   git commit -m "Integrate experimental features"
+   ```
+
+5. 进行 merge request：
+   - 提交 `feature/a` 到远程仓库并创建 merge request。
+   ```bash
+   git push origin feature/a
+   ```
+
+6. 进行 merge review 并合并 merge request：
+   - 在代码评审通过后，合并 `feature/a` 到 `master`。
+   ```bash
+   git checkout master
+   git merge feature/a
+   ```
 
 ## 测试题目
 1. 如何初始化一个新的 Git 仓库？
