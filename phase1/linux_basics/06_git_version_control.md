@@ -217,7 +217,7 @@ Git Flow 是一个基于分支的软件开发工作流程，它定义了一组�
    git stash save "feature B new task"
 
    # 切回 xiaohong/feature/a 并恢复之前的工作
-   git checkout zhangwei/feature/a
+   git checkout xiaohong/feature/a
    git stash list  # 查看所有 stash
    git stash pop   # 恢复最近的 stash（feature A 的工作）
 
