@@ -206,7 +206,7 @@ Git Flow 是一个基于分支的软件开发工作流程，它定义了一组�
    git commit -m "Fix bug in feature B"
    ```
 
-2. 在 `xiaohong/feature/b` 上又有新的任务，但需要先回到 `zhangwei/feature/a`：
+2. 在 `xiaohong/feature/b` 上又有新的任务，但需要先回到 `xiaohong/feature/a` 上：
 
    ```bash
    # xiaohong/feature/b 上的新工作
