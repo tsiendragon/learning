@@ -189,7 +189,7 @@ Git Flow 是一个基于分支的软件开发工作流程，它定义了一组�
 1. 在 `zhangwei/feature/a` 分支上工作时，突然需要切换到 `xiaohong/feature/b` 修复bug：
 
    ```bash
-   git checkout xiaohong/feature/b
+   git checkout xiaohong/feature/a
    # 在 zhangwei/feature/a 上进行工作
    echo "Feature A work in progress" >> experiment/feature_a.txt
    git add experiment/feature_a.txt
