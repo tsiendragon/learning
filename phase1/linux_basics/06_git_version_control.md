@@ -21,6 +21,12 @@ Git is a distributed version control system used to track changes in files and c
 3. Use `git add .` to add all changes to the staging area.
 4. Use `git commit -m "Initial commit"` to commit changes.
 5. Use `git push origin main` to push to a remote repository.
+6. 删除分支
+   🚀 **推荐做法**
+   1️⃣ **如果你只想删除远程分支** ：`git push origin --delete branch-name`
+   2️⃣ **如果你希望更新本地的远程分支列表** ：`git fetch --prune`
+   3️⃣ **如果你要删除 GitHub 远程分支** ：直接在 GitHub 的 "Branches" 页面删除
+   4️⃣ 如果删除的是 `main`** ：确保已创建新的 `main`，再执行删除操作
 
 ## Test Questions
 
@@ -607,34 +613,37 @@ git cherry-pick 用于从一个分支中挑选特定的提交（commit）并应�
 如图所示 这两个commit 的内容一摸一样，但是他们的commit hash是不一样的。
 
 ### 5. git rebase
-
+在 Git 版本控制中，git rebase 是一个强大的命令，主要用于整理提交历史，使其更加线性和清晰
 准备工作：模拟一个需要进行 rebase 的场景。
 
-1. 张伟在开发新功能时，main 分支有了新的更新：
+本文介绍了 Git Rebase 的典型使用场景，并通过一个 张伟（开发支付功能）与小红（开发用户资料功能）并行开发 的案例，展示了如何使用 git rebase 来整理 Git 历史，使提交记录更清晰和线性。
 
-   ```bash
-   # 创建并切换到功能分支
-   git checkout main
-   git checkout -b zhangwei/feature/payment
+张伟和小红先同时从当前的main 分支基础上，先独立开发
 
-   # 在功能分支上进行一些提交
-   echo "添加支付按钮" > experiment/payment.txt
-   git add experiment/payment.txt
-   git commit -m "Add payment button"
+**张伟开发**
 
-   echo "添加支付处理函数" >> experiment/payment.txt
-   git add experiment/payment.txt
-   git commit -m "Add payment handler"
+```bash
+# 创建并切换到功能分支
+git checkout main
+git pull
+git checkout -b zhangwei/feature/payment
 
-   # 这时候发现 main 分支有了新的更新
-   # 比如小红的代码被合并到了 main
-   ```
+# 在功能分支上进行一些提交
+echo "添加支付按钮" > experiment/payment.txt
+git add experiment/payment.txt
+git commit -m "Add payment button"
 
-2.1/2 模拟小红的工作
+echo "添加支付处理函数" >> experiment/payment.txt
+git add experiment/payment.txt
+git commit -m "Add payment handler"
+```
+
+**小红开发**
 
 ```bash
 # 小红在张伟开发期间，完成了用户资料更新功能
 git checkout main
+git pull
 git checkout -b xiaohong/feature/profile
 
 # 添加用户资料更新功能
@@ -645,57 +654,64 @@ git commit -m "Add avatar upload"
 echo "添加个人信息编辑" >> experiment/profile.txt
 git add experiment/profile.txt
 git commit -m "Add profile editor"
-
-# 小红的功能完成并合并到 main
-git checkout main
-git merge xiaohong/feature/profile
-git push origin main
-
-# 这时 main 分支已经包含了小红的更新
-# 张伟需要将这些更新应用到他的支付功能分支上
 ```
 
-2. 使用 rebase 更新功能分支：
+**小红先提交合并到 main**
 
-   ```bash
-   # 首先更新 main 分支
-   git checkout main
-   git pull
+```bash
+git checkout main
+git merge xiaohong/feature/profile
+git push
+```
 
-   # 切回功能分支并执行 rebase
-   git checkout zhangwei/feature/payment
-   git rebase main
+现在main同步了小红的用户资料更新功能，但是张伟的支付功能还没有同步，所以需要在zhangwei/feature/payment 分支上进行rebase。 如果直接使用merge 会让main 分支出现分叉。如果想保持分支结构为线性，则需要用到rebase。
 
-   # 如果有冲突，解决后继续
-   git add .
-   git rebase --continue
-   ```
+![alt text](../../docs/images/img_v3_02j1_99edf2e6-a435-4db7-803d-3e042e6a549h.jpg)
 
-3. 使用 rebase 合并多个提交：
 
-   ```bash
-   # 假设我们想要合并最近的三个提交
-   git rebase -i HEAD~3
+张伟随后开始使用 rebase 合并到自己的分支
 
-   # Git 会打开编辑器，显示类似下面的内容：
-   # pick abc123 Add payment button
-   # pick def456 Add payment handler
-   # pick ghi789 Fix payment bug
+```bash
+# 首先更新 main 分支
+git checkout main
+git pull
 
-   # 修改为：
-   # pick abc123 Add payment button
-   # squash def456 Add payment handler
-   # squash ghi789 Fix payment bug
+# 切回功能分支并执行 rebase
+git checkout zhangwei/feature/payment
+git rebase main
+# 保持了zhangwei 分支和main的线性结构， 再提交merge request
 
-   # 保存并退出编辑器后，Git 会让你编辑合并后的提交信息
-   ```
+# 如果有冲突，解决后继续
+git add .
+git rebase --continue
+# 因为 rebase 改变了历史，需要强制推送
+git push --force-with-lease origin zhangwei/feature/payment
+```
 
-4. 推送更新后的分支：
+![alt text](../../docs/images/img_v3_02j1_9def9150-31f6-4bfd-94cb-fe0cc1a2318h.jpg)
 
-   ```bash
-   # 因为 rebase 改变了历史，需要强制推送
-   git push --force-with-lease origin zhangwei/feature/payment
-   ```
+现在zhangwei/feature/payment 分支和main 分支都是线性的了，如上图
+
+登陆github 页面，创建merge request，按下图所示依次执行。
+![alt text](../../docs/images/image-1.png)
+
+![alt text](../../docs/images/image-2.png)
+
+![alt text](../../docs/images/image-3.png)
+注意需要在merge request 中选择rebase and merge选项
+![alt text](../../docs/images/image-5.png)
+如果是merge 则main 就会出现分叉
+![alt text](../../docs/images/image-4.png)
+
+本地同步跟新
+
+```bash
+git checkout main
+git pull
+```
+![alt text](../../docs/images/img_v3_02j1_3b97bc92-693e-4439-88b8-e832441434ch.jpg)
+
+现在main 分支也是线性了 同时同步了zhangwei 分支的更新.
 
 注意事项：
 
@@ -709,8 +725,22 @@ git push origin main
   ```
 
 ### 6. git reset
+一个简单的例子
 
-`git reset` 有三种模式：
+刚开始的状态
+![alt text](../../docs/images/img_v3_02j1_9a07a55c-942e-46d8-8a85-b2b781e9d90h.jpg)
+
+想把main reset 到合并之前的状态
+
+找到合并之前的commit hash
+
+```
+git reset --hard e806bd
+```
+rest之后的状态
+![alt text](../../docs/images/img_v3_02j1_0746705c-4ea7-4c78-ac5a-5f48dbb171eh.jpg)
+
+更进一步，`git reset` 有三种模式：
 
 - `--soft`：仅重置 HEAD 到指定提交，保留暂存区和工作目录的更改
 - `--mixed`（默认）：重置 HEAD 和暂存区，保留工作目录的更改
