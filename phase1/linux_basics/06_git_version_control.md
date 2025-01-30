@@ -67,7 +67,7 @@ Git 是一个分布式版本控制系统，用于跟踪文件的更改和协作�
 | --- | --- | --- | --- |
 | Untracked（未跟踪） | Git 未跟踪的新文件，未添加到暂存区 | git status | Source Control 面板，标记为 U（Untracked） |
 | Modified（已修改） | 已跟踪的文件被修改，但未添加到暂存区 | git status / git diff | Source Control 面板，标记为 M（Modified） |
-| Staged（已暂存） | 修改后的文件已添加到暂存区，等待提交 | git status / git diff --cached | Source Control 面板，出现在 Staged Changes |
+| Staged（已暂存） | 修改后的文件已添加到暂存区，等待提交 | git status / git diff --cached | Source Control 面板，出现在 Staged Changes 标记为A (Added)|
 | Committed（已提交） | 文件更改已提交到本地 Git 仓库 | git log / git show <commit-id> | Git History 扩展 或 GitLens |
 | Deleted（已删除） | 文件被删除但 Git 仍然跟踪它 | git status / git diff --cached | Source Control 面板，标记为 D（Deleted） |
 | Renamed（已重命名） | Git 识别到文件被重命名 | git status | Source Control 面板，标记为 R（Renamed） |
@@ -323,6 +323,7 @@ Git Flow 是一个基于分支的软件开发工作流程，它定义了一组�
    git commit -m "Integrate experimental features"
    git push
    ```
+   squash  可以把多个 commit 合并到一个 commit 中，这样可以减少提交次数，减少冲突，但是会丢失信息。在保持正式提交时的情况下，squash 是一个好的选择。
 
 5. 进行 merge request：
    - 提交 `zhangwei/feature/a` 到远程仓库并创建 merge request。
@@ -759,8 +760,11 @@ rest之后的状态
    mkdir -p experiment
 
    # 第一个提交：添加项目配置
+   echo "login" > experiment/login.txt
    echo "项目配置文件" > experiment/config.txt
    git add experiment/config.txt
+   git add experiment/login.txt
+
    git commit -m "Initial commit: Add config file"
 
    # 第二个提交：添加用户模块
@@ -799,76 +803,227 @@ rest之后的状态
 
    # 3. 未跟踪的文件
    echo "未跟踪的文件" > experiment/untracked.txt
+   mv experiment/config.txt experiment/configs.txt
+   rm experiment/login.txt
+   git mv experiment/register.txt experiment/register_func.txt
    ```
 
 2. 查看当前状态：
 
-   ```bash
-   git status
-   # 会显示：
-   # Changes to be committed:
-   #   new file:   experiment/staged.txt
-   # Changes not staged for commit:
-   #   modified:   experiment/order.txt
-   # Untracked files:
-   #   experiment/untracked.txt
+   ```
+   Changes to be committed:
+   (use "git restore --staged <file>..." to unstage)
+        renamed:    experiment/register.txt -> experiment/register_func.txt
+        new file:   experiment/staged.txt
+
+   Changes not staged for commit:
+   (use "git add/rm <file>..." to update what will be committed)
+   (use "git restore <file>..." to discard changes in working directory)
+         deleted:    experiment/config.txt
+         deleted:    experiment/login.txt
+         modified:   experiment/order.txt
+
+   Untracked files:
+   (use "git add <file>..." to include in what will be committed)
+         experiment/configs.txt
+         experiment/untracked.txt
    ```
 
-3. 使用 `git reset --soft`：
+   在vscode 的source countrol 中也可以看到各个文件的状态
 
-   ```bash
-   # 软重置到上一个提交
-   git reset --soft HEAD~1
+![alt text](../../docs/images/img_v3_02j1_9e0756be-5c30-4ea0-b7bf-f3b325206b1h.jpg)
 
-   git status
-   # 现在 committed.txt 的更改会出现在暂存区
-   # staged.txt 仍然在暂存区
-   # modified.txt 的修改仍然存在
-   # untracked.txt 仍然未跟踪
-   ```
+- R 表示renamed
+- M 表示modified
+- D 表示deleted
+- U 表示untracked
+- A 表示added
 
-4. 使用 `git reset --mixed`（默认模式）：
+#### 1. 使用 `git reset --soft`：
 
-   ```bash
-   # 先恢复到最新提交
-   git reset --hard HEAD@{1}
+在 Git 命令 `git reset --soft HEAD~1` 中，`HEAD~1` 的含义如下：
+- **`HEAD`** ：指的是当前分支的最新提交（即 `HEAD` 指针指向的提交）。
 
-   # 然后执行混合重置
-   git reset HEAD~1  # 或 git reset --mixed HEAD~1
+- **`~1`** ：表示“向上回退 1 次提交”（即 `HEAD` 的上一个提交，也就是 `HEAD^`）。
+  - `HEAD~1` 等同于 `HEAD^`，表示回退 1 次提交。
 
-   git status
-   # 现在 committed.txt 和 staged.txt 的更改会出现在未暂存区
-   # modified.txt 的修改仍然存在
-   # untracked.txt 仍然未跟踪
-   ```
+  - `HEAD~2` 表示回退 2 次提交，以此类推。
 
-5. 使用 `git reset --hard`：
+**例子**
 
-   ```bash
-   # 先恢复到最新提交
-   git reset --hard HEAD@{1}
+假设你的 Git 提交历史如下：
 
-   # 然后执行硬重置
-   git reset --hard HEAD~1
 
-   git status
-   # 现在 committed.txt 的更改完全消失
-   # staged.txt 的更改完全消失
-   # modified.txt 恢复到原始状态
-   # untracked.txt 仍然存在（注意：未跟踪的文件不受影响）
-   ```
+```css
+A -- B -- C (HEAD)
+```
+执行 `git reset --soft HEAD~1` 后，`HEAD` 会回退到 `B`，但不会修改暂存区（staging area）和工作区（working directory）：
 
-6. 重置单个文件：
+```css
+A -- B (HEAD)
+```
+但 `C` 的更改仍然存在于暂存区，意味着你可以重新提交它或进行其他操作。不同的 `git reset` 选项：
+- `--soft`：只回退 `HEAD` 指针，提交的更改仍然在暂存区（`git status` 会显示文件仍处于 "Changes to be committed" 状态）。
 
-   ```bash
-   # 只重置暂存区中的特定文件
-   git reset experiment/staged.txt
-   # 文件内容保持不变，但会从暂存区移除
+- `--mixed`（默认）：回退 `HEAD` 指针，并且撤销 `git add` 的操作，但不会影响工作目录。
 
-   # 重置单个文件到特定提交
-   git reset abc123 experiment/modified.txt
-   # 将文件重置到指定提交的状态，但更改仍在工作目录中
-   ```
+- `--hard`：彻底回退提交，并且删除所有代码改动（慎用）。
+你可以根据实际需求选择合适的 `git reset` 选项。
+
+
+```bash
+# 软重置到上一个提交
+git reset --soft HEAD~1
+git status
+```
+
+现在的状态
+```
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   experiment/config.txt
+        renamed:    experiment/register.txt -> experiment/register_func.txt
+        new file:   experiment/staged.txt
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    experiment/config.txt
+        deleted:    experiment/login.txt
+        modified:   experiment/order.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        experiment/configs.txt
+        experiment/untracked.txt
+```
+Update config settings 的commit 没有了，但是其他的文件状态都没有变化
+
+
+####  使用 `git reset --mixed`（默认模式）：
+先恢复各种文件的状态
+
+```bash
+git reset --hard HEAD@{1}
+git mv experiment/register.txt experiment/register_func.txt
+echo "staged" >> experiment/staged.txt
+git add experiment/staged.txt
+ echo "change user" >> experiment/user.txt
+git add  experiment/user.txt
+echo "change order" >> experiment/order.txt
+rm experiment/login.txt
+```
+
+各种文件的状态
+![alt text](../../docs/images/img_v3_02j1_6bf38427-29bd-4f0e-bb8a-818e43751feh.jpg)
+
+```bash
+git reset HEAD~2  # 或 git reset --mixed HEAD~1
+git status
+>>> Changes not staged for commit:
+>>>  (use "git add/rm <file>..." to update what will be committed)
+>>>  (use "git restore <file>..." to discard changes in working directory)
+>>>        modified:   experiment/config.txt
+>>>        deleted:    experiment/login.txt
+>>>        deleted:    experiment/register.txt
+>>>        modified:   experiment/user.txt
+
+>>> Untracked files:
+>>>   (use "git add <file>..." to include in what will be committed)
+>>>        experiment/configs.txt
+>>>        experiment/order.txt
+>>>        experiment/register_func.txt
+>>>        experiment/staged.txt
+>>>        experiment/untracked.txt
+```
+
+清除了staged 修改，但是其他的文件状态没有变化，staged 变成了 untracked或者 un-staged. user.txt 变成了un-staged, 因为user.txt 之前已经track过了。staged.txt 变成了untracked, 因为staged.txt 没有track过。register_func.txt 变成了untracked, 因为register_func.txt 没有track过, 因为register的commit 已经被撤回了，当前的commit 没有track 过register.txt 和register_func.txt，后者是从register.txt 重命名而来。
+
+
+####  使用 `git reset --hard`
+
+```
+git reset @{1} # 回复到前两个commit
+
+```
+丢弃所有修改
+
+![alt text](../../docs/images/img_v3_02j1_41bdf8f6-0738-4101-851d-0754bfee84ch.jpg)
+
+现在所有修改的都没有了
+![alt text](../../docs/images/img_v3_02j1_5170ce8e-e28f-442c-a88f-1f534051bddh.jpg)
+
+再模拟各种各种文件状态
+
+```bash
+git mv experiment/register.txt experiment/register_func.txt
+echo "staged" >> experiment/staged.txt
+git add experiment/staged.txt
+ echo "change user" >> experiment/user.txt
+git add  experiment/user.txt
+echo "change order" >> experiment/order.txt
+rm experiment/login.txt
+echo "untracked" >> experiment/untracked.txt
+echo "config update 2" >> experiment/config.txt
+```
+
+目前的状态
+
+![alt text](../../docs/images/img_v3_02j1_0fb048cd-c120-45e2-8d3f-94943854ad2h.jpg)
+
+
+config.txt 内容
+![alt text](../../docs/images/img_v3_02j1_7e794a1e-eeb0-4ff1-ac75-4c8adf51587h.jpg)
+
+
+```bash
+git reset --hard HEAD~2 # reset 连个commit
+```
+
+![alt text](../../docs/images/img_v3_02j1_dbbe18cb-dd04-47ad-ba51-4ab87bafb53h.jpg)
+
+reset 之后只剩下两个commit，同时source control 只剩下untracked.txt
+
+
+**Git `reset` 命令对不同文件状态的影响**
+
+| 文件状态 | git reset --soft | git reset --mixed | git reset --hard |
+| --- | --- | --- | --- |
+| HEAD（提交历史） | 回退到指定提交 | 回退到指定提交 | 回退到指定提交 |
+| 暂存区（Staging Area） | 不变 | 清除（回到 HEAD 状态） | 清除（回到 HEAD 状态） |
+| 工作区（Working Directory） | 不变 | 不变 | 恢复为 HEAD 状态（丢弃已跟踪文件的修改） |
+| 已提交的文件（Tracked, Unmodified） | 不变 | 不变 | 不变 |
+| 已修改但未提交的文件（Tracked, Modified） | 不变 | 不变 | 丢弃修改，恢复为 HEAD 版本 |
+| 已暂存但未提交的文件（Tracked, Staged） | 保持暂存 | 撤回暂存，但保留修改 | 丢弃修改，恢复为 HEAD 版本 |
+| 未跟踪的文件（Untracked） | 不变 | 不变 | 不变（不会删除） |
+| 忽略的文件（Ignored） | 不变 | 不变 | 不变 |
+
+
+---
+
+**补充**
+- `--soft`：**只回退提交历史** ，暂存区和工作区**保持不变** 。适用于撤销最近的提交但保留代码状态（类似 `git commit --amend`）。
+
+- `--mixed`（默认）：**回退提交历史并清除暂存区** ，但**不影响工作区** 。适用于回退提交但保留代码修改，重新 `git add` 之后可以重新提交。
+
+- `--hard`：**回退提交历史、清除暂存区、重置工作区** ，即**完全恢复到指定提交的状态** ，已修改但未提交的更改会**被丢弃** （**慎用！** ）。
+
+
+---
+
+**其他相关命令** 如果 `git reset --hard` 之后发现误操作，可以尝试：
+
+```bash
+git reflog
+git reset --hard HEAD@{1}  # 恢复到 reset 之前的状态
+```
+如果想**删除未跟踪的文件** ，需手动运行：
+
+```bash
+git clean -fd  # 删除未跟踪的文件和目录
+git clean -fx  # 删除未跟踪的文件，包括 .gitignore 里忽略的文件
+```
+这张表可以帮助你选择适合的 `reset` 方式，以避免数据丢失。
 
 注意事项：
 
@@ -882,7 +1037,9 @@ rest之后的状态
 
 - 可以使用 `git reflog` 查看操作历史，在意外重置后恢复：
 
-  ```bash
-  git reflog  # 查看操作历史
-  git reset HEAD@{1}  # 恢复到上一个操作
-  ```
+```bash
+git reflog  # 查看操作历史
+git reset HEAD@{1}  # 恢复到上一个操作， 可以简写为 git reset @{1}
+```
+
+git reset HEAD@{1} 也可以使用 --soft、--mixed 和 --hard 选项，作用与 git reset <commit> 相同，只不过 HEAD@{1} 指的是 Git reflog 记录中的上一个 HEAD 位置
