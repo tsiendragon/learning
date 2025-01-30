@@ -1,35 +1,35 @@
-# 基本语法
+# Basic Syntax
 
-## 概念的解释
-Python 的基本语法包括变量定义、数据类型、控制结构等。
+## Concept Explanation
+Python's basic syntax includes variable definitions, data types, control structures, and more.
 
-## 参数的解释
-- **变量**：用于存储数据。
-  - `x = 5`：定义整数变量。
-- **数据类型**：如整数、字符串、列表。
-  - `type(x)`：获取变量类型。
-- **控制结构**：如条件语句和循环。
-  - `if`：条件判断。
-  - `for`：循环。
+## Parameter Explanation
+- **Variables** : Used to store data.
+  - `x = 5`: Define an integer variable.
+- **Data Types** : Such as integers, strings, lists.
+  - `type(x)`: Get variable type.
+- **Control Structures** : Such as conditional statements and loops.
+  - `if`: Conditional statements.
+  - `for`: Loops.
 
-## 实践的例子
-1. 定义一个变量并输出其值：
+## Practical Examples
+1. Define a variable and print its value:
    ```python
    x = 10
    print(x)
    ```
-2. 使用 `if` 语句判断条件：
+2. Use `if` statement for condition checking:
    ```python
    if x > 5:
        print("x is greater than 5")
    ```
-3. 使用 `for` 循环遍历列表：
+3. Use `for` loop to iterate through a list:
    ```python
    for i in [1, 2, 3]:
        print(i)
    ```
 
-## 测试题目
-1. 如何定义一个字符串变量？
-2. 使用哪个函数可以获取变量的类型？
-3. 如何编写一个简单的 `if` 语句？
+## Practice Questions
+1. How do you define a string variable?
+2. Which function is used to get the type of a variable?
+3. How do you write a simple `if` statement?
