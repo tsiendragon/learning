@@ -44,9 +44,10 @@ Git 是一个分布式版本控制系统，用于跟踪文件的更改和协作�
 - **`git merge --squash`**：将指定分支的更改合并到当前分支，但不自动创建合并提交。合并的更改会被暂存，用户需要手动创建提交。
 - **`git cherry-pick`**：从远程仓库中提取指定的提交并应用到本地。
 - **`git rebase`**：`git rebase` 是一个用于将一个分支的更改应用到另一个分支之上的命令。它常用于线性化提交历史，保持历史的简洁性和可读性。在使用 `git rebase` 时，Git 会把当前分支从其基础分支“移出”，并将其应用到新的基础之上。需要注意的是，rebase 会改变提交历史，因此在共享分支上使用时要谨慎。
+
 ![](https://miro.medium.com/v2/resize:fit:1100/format:webp/1*K4anH9QzRcPqLCv-7HyiCQ.png)
 
-### git flow best practice
+## git flow best practice
 ![git flow best practice](https://media.geeksforgeeks.org/wp-content/uploads/20240223193253/gitflow_diagram_gfg-660.png)
 
 Git Flow 是一个基于分支的软件开发工作流程，它定义了一组严格的分支操作规则。主要包含以下分支：
