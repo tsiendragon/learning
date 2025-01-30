@@ -306,7 +306,8 @@ Git Flow 是一个基于分支的软件开发工作流程，它定义了一组�
 
 6. 进行 merge review 并合并 merge request：
    - 在代码评审通过后，合并 `zhangwei/feature/a` 到 `main`。
-   ![alt text](../../docs/images/image.png)
+
+   ![alt text](../../../images/image.png)
 
    ```bash
    git checkout main
@@ -378,7 +379,7 @@ Git Flow 是一个基于分支的软件开发工作流程，它定义了一组�
 张伟和小红在同一个项目上工作，他们需要分别开发不同的功能。
 分别模拟zhangwei 和 xiaohong 的工作流程。他们分别创建不同的分支.
 
-最开始的状态如下：![alt text](../../docs/images/img_v3_02j1_1d30823c-798d-44e9-9d0e-854a30558bfh.jpg)
+最开始的状态如下：![alt text](../../../images/img_v3_02j1_1d30823c-798d-44e9-9d0e-854a30558bfh.jpg)
 
    ```bash
    # 小红：从最新的 main 分支创建功能分支
@@ -415,7 +416,7 @@ Git Flow 是一个基于分支的软件开发工作流程，它定义了一组�
 
    目前状态应该是 zhangwei/feature/login 会提前main 两个提交
 
-   ![alt text](../../docs/images/img_v3_02j1_c562384b-a637-4247-a3ee-be794ed79e3h.jpg)
+   ![alt text](../../../images/img_v3_02j1_c562384b-a637-4247-a3ee-be794ed79e3h.jpg)
 
    张伟提交merge request 到 main 并合并。
 
@@ -431,7 +432,7 @@ Git Flow 是一个基于分支的软件开发工作流程，它定义了一组�
    ```
 
    merge 之后，main 保持和zhangwei/feature/login 同步
-   ![merge](../../docs/images/img_v3_02j1_9ca5eb4f-0c8d-4e0d-ab0f-a6052ef3789h.jpg)
+   ![merge](../../../images/img_v3_02j1_9ca5eb4f-0c8d-4e0d-ab0f-a6052ef3789h.jpg)
 
 2. 同时，小红在开发注册功能：
 
@@ -461,7 +462,7 @@ git checkout -b xiaohong/feature/register
    ```
 此时的分支状态为
 
-![branch status](../../docs/images/img_v3_02j1_19a42460-9dc7-464e-ac95-8df176bdd32h.jpg)
+![branch status](../../../images/img_v3_02j1_19a42460-9dc7-464e-ac95-8df176bdd32h.jpg)
 
 3. 小红提交注册功能：
 
@@ -475,10 +476,10 @@ git checkout -b xiaohong/feature/register
 
    这时可能会出现merge conflict, 因为小红和张伟都在修改register.txt，所以会出现conflict。
 
-   ![alt text](../../docs/images/img_v3_02j1_7df340e3-da11-4222-9a0d-82362df2140h.jpg)
+   ![alt text](../../../images/img_v3_02j1_7df340e3-da11-4222-9a0d-82362df2140h.jpg)
    在source control 中，点击conflict 文件, 查看冲突的内容，在编辑器中解决掉conflict。
 
-   ![1](../../docs/images/img_v3_02j1_4bf19a2a-f8a4-4f32-b6cc-485d5f9f8d8h.jpg)
+   ![1](../../../images/img_v3_02j1_4bf19a2a-f8a4-4f32-b6cc-485d5f9f8d8h.jpg)
 
    解决完之后，提交合并的commit
 
@@ -548,7 +549,7 @@ git cherry-pick 用于从一个分支中挑选特定的提交（commit）并应�
    ```
 准备好的小红和张伟的分支应该如下
 
-![alt text](../../docs/images/img_v3_02j1_441e403c-774e-494b-b333-d46859de635h.jpg)
+![alt text](../../../images/img_v3_02j1_441e403c-774e-494b-b333-d46859de635h.jpg)
 
 
 张伟发现小红的密码检查函数很实用，想要在登录功能中使用，但是还不想合并小红的所有提交。。
@@ -581,7 +582,7 @@ git cherry-pick 用于从一个分支中挑选特定的提交（commit）并应�
    ```
 这样张伟的分支中就把小红的密码检查函数pick 过来了。
 
-![alt text](../../docs/images/img_v3_02j1_bf7314a3-cb3d-42cd-9fcd-bfb8cc10372h.jpg)
+![alt text](../../../images/img_v3_02j1_bf7314a3-cb3d-42cd-9fcd-bfb8cc10372h.jpg)
 
 如图所示 这两个commit 的内容一摸一样，但是他们的commit hash是不一样的。
 
@@ -639,7 +640,7 @@ git push
 
 现在main同步了小红的用户资料更新功能，但是张伟的支付功能还没有同步，所以需要在zhangwei/feature/payment 分支上进行rebase。 如果直接使用merge 会让main 分支出现分叉。如果想保持分支结构为线性，则需要用到rebase。
 
-![alt text](../../docs/images/img_v3_02j1_99edf2e6-a435-4db7-803d-3e042e6a549h.jpg)
+![alt text](../../../images/img_v3_02j1_99edf2e6-a435-4db7-803d-3e042e6a549h.jpg)
 
 
 张伟随后开始使用 rebase 合并到自己的分支
@@ -661,20 +662,20 @@ git rebase --continue
 git push --force-with-lease origin zhangwei/feature/payment
 ```
 
-![alt text](../../docs/images/img_v3_02j1_9def9150-31f6-4bfd-94cb-fe0cc1a2318h.jpg)
+![alt text](../../../images/img_v3_02j1_9def9150-31f6-4bfd-94cb-fe0cc1a2318h.jpg)
 
 现在zhangwei/feature/payment 分支和main 分支都是线性的了，如上图
 
 登陆github 页面，创建merge request，按下图所示依次执行。
-![alt text](../../docs/images/image-1.png)
+![alt text](../../../images/image-1.png)
 
-![alt text](../../docs/images/image-2.png)
+![alt text](../../../images/image-2.png)
 
-![alt text](../../docs/images/image-3.png)
+![alt text](../../../images/image-3.png)
 注意需要在merge request 中选择rebase and merge选项
-![alt text](../../docs/images/image-5.png)
+![alt text](../../../images/image-5.png)
 如果是merge 则main 就会出现分叉
-![alt text](../../docs/images/image-4.png)
+![alt text](../../../images/image-4.png)
 
 本地同步跟新
 
@@ -682,7 +683,7 @@ git push --force-with-lease origin zhangwei/feature/payment
 git checkout main
 git pull
 ```
-![alt text](../../docs/images/img_v3_02j1_3b97bc92-693e-4439-88b8-e832441434ch.jpg)
+![alt text](../../../images/img_v3_02j1_3b97bc92-693e-4439-88b8-e832441434ch.jpg)
 
 现在main 分支也是线性了 同时同步了zhangwei 分支的更新.
 
@@ -701,7 +702,7 @@ git pull
 一个简单的例子
 
 刚开始的状态
-![alt text](../../docs/images/img_v3_02j1_9a07a55c-942e-46d8-8a85-b2b781e9d90h.jpg)
+![alt text](../../../images/img_v3_02j1_9a07a55c-942e-46d8-8a85-b2b781e9d90h.jpg)
 
 想把main reset 到合并之前的状态
 
@@ -711,7 +712,7 @@ git pull
 git reset --hard e806bd
 ```
 rest之后的状态
-![alt text](../../docs/images/img_v3_02j1_0746705c-4ea7-4c78-ac5a-5f48dbb171eh.jpg)
+![alt text](../../../images/img_v3_02j1_0746705c-4ea7-4c78-ac5a-5f48dbb171eh.jpg)
 
 更进一步，`git reset` 有三种模式：
 
@@ -803,7 +804,7 @@ rest之后的状态
 
    在vscode 的source countrol 中也可以看到各个文件的状态
 
-![alt text](../../docs/images/img_v3_02j1_9e0756be-5c30-4ea0-b7bf-f3b325206b1h.jpg)
+![alt text](../../../images/img_v3_02j1_9e0756be-5c30-4ea0-b7bf-f3b325206b1h.jpg)
 
 - R 表示renamed
 - M 表示modified
@@ -887,7 +888,7 @@ rm experiment/login.txt
 ```
 
 各种文件的状态
-![alt text](../../docs/images/img_v3_02j1_6bf38427-29bd-4f0e-bb8a-818e43751feh.jpg)
+![alt text](../../../images/img_v3_02j1_6bf38427-29bd-4f0e-bb8a-818e43751feh.jpg)
 
 
 ```bash
@@ -921,10 +922,10 @@ git reset @{1} # 回复到前两个commit
 ```
 丢弃所有修改
 
-![alt text](../../docs/images/img_v3_02j1_41bdf8f6-0738-4101-851d-0754bfee84ch.jpg)
+![alt text](../../../images/img_v3_02j1_41bdf8f6-0738-4101-851d-0754bfee84ch.jpg)
 
 现在所有修改的都没有了
-![alt text](../../docs/images/img_v3_02j1_5170ce8e-e28f-442c-a88f-1f534051bddh.jpg)
+![alt text](../../../images/img_v3_02j1_5170ce8e-e28f-442c-a88f-1f534051bddh.jpg)
 
 再模拟各种各种文件状态
 
@@ -942,18 +943,18 @@ echo "config update 2" >> experiment/config.txt
 
 目前的状态
 
-![alt text](../../docs/images/img_v3_02j1_0fb048cd-c120-45e2-8d3f-94943854ad2h.jpg)
+![alt text](../../../images/img_v3_02j1_0fb048cd-c120-45e2-8d3f-94943854ad2h.jpg)
 
 
 config.txt 内容
-![alt text](../../docs/images/img_v3_02j1_7e794a1e-eeb0-4ff1-ac75-4c8adf51587h.jpg)
+![alt text](../../../images/img_v3_02j1_7e794a1e-eeb0-4ff1-ac75-4c8adf51587h.jpg)
 
 
 ```bash
 git reset --hard HEAD~2 # reset 连个commit
 ```
 
-![alt text](../../docs/images/img_v3_02j1_dbbe18cb-dd04-47ad-ba51-4ab87bafb53h.jpg)
+![alt text](../../../images/img_v3_02j1_dbbe18cb-dd04-47ad-ba51-4ab87bafb53h.jpg)
 
 reset 之后只剩下两个commit，同时source control 只剩下untracked.txt
 

@@ -1,0 +1,112 @@
+site_name: "Learning Path: Linux and Python"
+use_directory_urls: true
+docs_dir: docs
+site_dir: site
+
+nav:
+  - HOMEPAGE: overrides/index.html
+  - Phase 1 - Linux Basics:
+    - File System: book/phase1/linux_basics/01_linux_file_system.md
+    - Permission Management: book/phase1/linux_basics/02_permission_management.md
+    - Network Basics: book/phase1/linux_basics/03_network_basics.md
+    - Text Editors: book/phase1/linux_basics/04_text_editors.md
+    - Shell Scripting: book/phase1/linux_basics/05_shell_scripting.md
+    - Git Version Control: book/phase1/linux_basics/06_git_version_control.md
+    - Development Tools: book/phase1/linux_basics/07_development_tools.md
+    - Networking & Remote Operations: book/phase1/linux_basics/08_networking_remote_operations.md
+    - Programming Environment: book/phase1/linux_basics/09_programming_environment.md
+    - Performance Tuning: book/phase1/linux_basics/10_performance_tuning.md
+    - Containers & Virtualization: book/phase1/linux_basics/11_containers_virtualization.md
+    - File & Data Processing: book/phase1/linux_basics/12_file_data_processing.md
+  - Phase 2 - Python Basics:
+    - Basic Syntax: book/phase2/python_basics/01_basic_syntax.md
+    - Functions & Modules: book/phase2/python_basics/02_functions_modules.md
+    - Classes & Objects: book/phase2/python_basics/03_classes_objects.md
+    - Common Libraries: book/phase2/python_basics/04_common_libraries.md
+    - Best Practices: book/phase2/python_basics/05_best_practices.md
+    - Algorithms & Techniques: book/phase2/python_basics/06_algorithms_techniques.md
+  - Deployment Guide: book/mkdocs_deployment_guide.md
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  features:
+    - navigation.tabs
+    - toc.integrate
+    - navigation.top
+    - search.highlight
+    - navigation.expand
+    - navigation.sections
+    - content.code.copy
+    - content.code.annotate
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    logo: material/book-open-page-variant
+    repo: fontawesome/brands/github
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/tsiendragon/learning
+  generator: false
+
+markdown_extensions:
+  - meta
+  - def_list
+  - attr_list
+  - md_in_html
+  - tables
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.keys
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - footnotes
+  - md_in_html
+  - attr_list
+  - pymdownx.arithmatex:
+      generic: true
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - tags
