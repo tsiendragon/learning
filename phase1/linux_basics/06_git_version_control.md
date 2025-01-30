@@ -1043,3 +1043,5 @@ git reset HEAD@{1}  # 恢复到上一个操作， 可以简写为 git reset @{1}
 ```
 
 git reset HEAD@{1} 也可以使用 --soft、--mixed 和 --hard 选项，作用与 git reset <commit> 相同，只不过 HEAD@{1} 指的是 Git reflog 记录中的上一个 HEAD 位置
+
+因此在实际开发中，尽量将工作及时commit 和push，避免出现丢失数据的情况。实在要立马操作，不方便commit 的时候，可以用stash 暂存，然后在合适的时候再进行操作
