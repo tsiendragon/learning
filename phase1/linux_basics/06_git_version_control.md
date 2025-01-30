@@ -520,15 +520,24 @@ git checkout -b xiaohong/feature/register
 
 ### 4. git cherry-pick
 
+git cherry-pick 用于从一个分支中挑选特定的提交（commit）并应用到当前分支，而不影响其他提交。它适用于以下场景：
+
+跨分支迁移单个或多个提交（如将 feature 分支的某个提交应用到 main）。
+修复 Bug（挑选修复 Bug 的 commit，合并到生产环境）。
+避免合并整个分支（只想要特定的更改，而不是整个分支的所有提交）。
+
+现在模拟一个例子，让我们看看如何使用 git cherry-pick。
+
+> 张伟在工作是开发登录功能，小红在开发注册功能。张伟发现小红的密码检查函数很实用，想要在登录功能中使用。
 
 准备工作：首先创建并设置两个分支的内容。
 
-1. 小红的分支：创建一个包含常用函数列表的文件
+**小红的分支**
 
    ```bash
    # 小红创建新分支
    git checkout main
-   git checkout -b xiaohong/feature/register
+   git checkout -b xiaohong/feature/4
 
    # 创建实验目录
    mkdir -p experiment
@@ -543,12 +552,12 @@ git checkout -b xiaohong/feature/register
    git commit -m "Add password check function"
    ```
 
-2. 张伟的分支：开始开发登录功能
+**张伟的分支**
 
    ```bash
    # 张伟创建新分支
    git checkout main
-   git checkout -b zhangwei/feature/login
+   git checkout -b zhangwei/feature/4
 
    # 确保实验目录存在
    mkdir -p experiment
@@ -558,22 +567,44 @@ git checkout -b xiaohong/feature/register
    git add experiment/login.txt
    git commit -m "Add login page design"
    ```
+准备好的小红和张伟的分支应该如下
 
-3. 张伟发现小红的密码检查函数很实用，想要在登录功能中使用：
+![alt text](../../docs/images/img_v3_02j1_441e403c-774e-494b-b333-d46859de635h.jpg)
+
+
+张伟发现小红的密码检查函数很实用，想要在登录功能中使用，但是还不想合并小红的所有提交。。
 
    ```bash
    # 查看小红分支的提交历史
-   git log xiaohong/feature/register
+   git log xiaohong/feature/4
+   >>>
+   >>> commit d8f6173bec335204dfe18866a05d9fa9af66147d (xiaohong/feature/4)
+   >>> Author: lilong <TsienDragon@outlook.com>
+   >>> Date:   Thu Jan 30 16:47:38 2025 +0800
+   >>>
+   >>>   Add password check function
+   >>>
+   >>> commit 925abd9a8a1f842159d8defb0d721891ef50a221
+   >>> Author: lilong <TsienDragon@outlook.com>
+   >>> Date:   Thu Jan 30 16:47:05 2025 +0800
+   >>>
+   >>>   Add email check function
+   >>>
+   >>> commit f4a078a916e587d40f0368930318571d66e7f96d (origin/main, origin/HEAD, main)
 
-   # 找到密码检查函数的提交（第二个提交）
-   git checkout zhangwei/feature/login
-   git cherry-pick abc123  # abc123 是密码检查函数的提交 hash
+   # 张伟要把小红实现的邮箱验证的功能pick 过来，找到邮箱验证函数的提交 hash
 
-   # 现在 experiment/login.txt 中会包含密码检查函数
-   echo "使用密码强度检查" >> experiment/login.txt
-   git add experiment/login.txt
-   git commit -m "Integrate password check into login"
+   git checkout zhangwei/feature/4 # 确保在张伟的分支
+   git cherry-pick 925abd9a8a1f842159d8defb0d721891ef50a221  # 925abd9a8a1f842159d8defb0d721891ef50a221 是密码检查函数的提交 hash
+   # 你可以使用 commit 的前几位（通常 7-10 位即可），只要它在当前仓库中是唯一的
+   # 或者用 git cherry-pick 925a
+
    ```
+这样张伟的分支中就把小红的密码检查函数pick 过来了。
+
+![alt text](../../docs/images/img_v3_02j1_bf7314a3-cb3d-42cd-9fcd-bfb8cc10372h.jpg)
+
+如图所示 这两个commit 的内容一摸一样，但是他们的commit hash是不一样的。
 
 ### 5. git rebase
 
