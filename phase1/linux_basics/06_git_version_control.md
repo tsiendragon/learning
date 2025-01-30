@@ -248,8 +248,26 @@ Git Flow 是一个基于分支的软件开发工作流程，它定义了一组�
 ### 3. merge 工作流程
 
 张伟和小红在同一个项目上工作，他们需要分别开发不同的功能。
+分别模拟zhangwei 和 xiaohong 的工作流程。他们分别创建不同的分支.
+
+最开始的状态如下：![alt text](../../docs/images/img_v3_02j1_1d30823c-798d-44e9-9d0e-854a30558bfh.jpg)
+
+   ```bash
+   # 小红：从最新的 main 分支创建功能分支
+   git checkout main
+   git pull  # 确保 main 是最新的， 一般切换新分支之前，先pull以免落后，导致conflict
+   git checkout -b xiaohong/feature/register
+   ```
+
+   ```bash
+   # 张伟：从最新的 main 分支创建功能分支
+   git checkout main
+   git pull  # 确保 main 是最新的
+   git checkout -b zhangwei/feature/login
+   ```
 
 1. 张伟开始开发用户登录功能：
+
 
    ```bash
    # 张伟：从最新的 main 分支创建功能分支
@@ -265,24 +283,40 @@ Git Flow 是一个基于分支的软件开发工作流程，它定义了一组�
    echo "登录验证" >> experiment/login.txt
    git add experiment/login.txt
    git commit -m "Add login validation"
+   ```
 
+   目前状态应该是 zhangwei/feature/login 会提前main 两个提交
+
+   ![alt text](../../docs/images/img_v3_02j1_c562384b-a637-4247-a3ee-be794ed79e3h.jpg)
+
+   张伟提交merge request 到 main 并合并。
+
+   ```bash
    # 张伟：提交并合并功能
    git push origin zhangwei/feature/login
    # 创建 merge request
+   # 正常是在github 页面提交merge request，进行review 再合并，请查阅第一个例子。下面是直接在命令行合并，模拟这个工作。
    git checkout main
    git pull  # 再次确保 main 是最新的
    git merge zhangwei/feature/login
    git push origin main
    ```
 
+   merge 之后，main 保持和zhangwei/feature/login 同步
+   ![merge](../../docs/images/img_v3_02j1_9ca5eb4f-0c8d-4e0d-ab0f-a6052ef3789h.jpg)
+
 2. 同时，小红在开发注册功能：
 
-   ```bash
-   # 小红：从最新的 main 分支创建功能分支
-   git checkout main
-   git pull  # 确保 main 是最新的
-   git checkout -b xiaohong/feature/register
+我们假设小红和张伟都在开发注册功能。
+切换到小红的分支工作
 
+```bash
+git checkout -b xiaohong/feature/register
+```
+
+小红独立在自己的分支工作。
+
+   ```bash
    # 小红：开发注册功能
    echo "注册页面设计" > experiment/register.txt
    git add experiment/register.txt
@@ -291,9 +325,17 @@ Git Flow 是一个基于分支的软件开发工作流程，它定义了一组�
    echo "注册验证" >> experiment/register.txt
    git add experiment/register.txt
    git commit -m "Add register validation"
-   ```
 
-3. 张伟的功能已经合并，小红需要更新她的分支：
+   # 小红也需要在login.txt 上做一个修改，但是她还不知道张伟的修改
+   echo "注册后登录验证" >> experiment/login.txt
+   git add experiment/login.txt
+   git commit -m "Add login validation after register"
+   ```
+此时的分支状态为
+
+![branch status](../../docs/images/img_v3_02j1_19a42460-9dc7-464e-ac95-8df176bdd32h.jpg)
+
+3. 小红提交注册功能：
 
    ```bash
    # 小红：获取最新的 main 分支并更新自己的功能分支
@@ -301,12 +343,22 @@ Git Flow 是一个基于分支的软件开发工作流程，它定义了一组�
    git pull
    git checkout xiaohong/feature/register
    git merge main  # 将最新的 main 合并到自己的功能分支
+   ```
 
-   # 解决可能的冲突后继续工作
-   echo "邮箱验证" >> experiment/register.txt
-   git add experiment/register.txt
-   git commit -m "Add email verification"
+   这时可能会出现merge conflict, 因为小红和张伟都在修改register.txt，所以会出现conflict。
 
+   ![alt text](../../docs/images/img_v3_02j1_7df340e3-da11-4222-9a0d-82362df2140h.jpg)
+   在source control 中，点击conflict 文件, 查看冲突的内容，在编辑器中解决掉conflict。
+
+   ![1](../../docs/images/img_v3_02j1_4bf19a2a-f8a4-4f32-b6cc-485d5f9f8d8h.jpg)
+
+   解决完之后，提交合并的commit
+
+   ```bash
+   git commit -m "Merge branch 'main' into 'xiaohong/feature/register'"
+   ```
+
+   ```bash
    # 小红：提交并合并功能
    git push origin xiaohong/feature/register
    # 创建 merge request
@@ -315,17 +367,7 @@ Git Flow 是一个基于分支的软件开发工作流程，它定义了一组�
    git merge xiaohong/feature/register
    git push origin main
    ```
-
-4. 开发新功能：
-
-   ```bash
-   # 张伟和小红都从最新的 main 开始新的功能开发
-   git checkout main
-   git pull
-   git checkout -b zhangwei/feature/new-feature  # 张伟的新功能分支
-   # 或
-   git checkout -b xiaohong/feature/new-feature  # 小红的新功能分支
-   ```
+提交完merge request之后，小红的分支和main 保持一致。并且包含了zhangwei 的register功能。
 
 ### 4. git cherry-pick
 
