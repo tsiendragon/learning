@@ -8,16 +8,16 @@
       
       
       
-        <link rel="canonical" href="https://tsiendragon.github.io/learning/book/phase1/linux_basics/06_git_version_control/">
+        <link rel="canonical" href="https://tsiendragon.github.io/learning/book/phase1/linux_basics/06_git_version_control.html">
       
       
-        <link rel="prev" href="../05_shell_scripting/">
+        <link rel="prev" href="05_shell_scripting.html">
       
       
-        <link rel="next" href="../07_development_tools/">
+        <link rel="next" href="07_development_tools.html">
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
     
     
@@ -26,10 +26,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -90,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="Learning Path: Linux and Python" class="md-header__button md-logo" aria-label="Learning Path: Linux and Python" data-md-component="logo">
+    <a href="../../../index.html" title="Learning Path: Linux and Python" class="md-header__button md-logo" aria-label="Learning Path: Linux and Python" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
@@ -186,6 +186,18 @@
 </div>
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/tsiendragon/learning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
   </nav>
   
 </header>
@@ -205,7 +217,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../.." class="md-tabs__link">
+      <a href="../../../index.html" class="md-tabs__link">
         
   
     
@@ -226,7 +238,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../01_linux_file_system/" class="md-tabs__link">
+        <a href="01_linux_file_system.html" class="md-tabs__link">
           
   
   Phase 1 - Linux Basics
@@ -244,7 +256,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../phase2/python_basics/01_basic_syntax/" class="md-tabs__link">
+        <a href="../../phase2/python_basics/01_basic_syntax.html" class="md-tabs__link">
           
   
   Phase 2 - Python Basics
@@ -260,7 +272,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../mkdocs_deployment_guide/" class="md-tabs__link">
+      <a href="../../mkdocs_deployment_guide.html" class="md-tabs__link">
         
   
     
@@ -296,7 +308,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="Learning Path: Linux and Python" class="md-nav__button md-logo" aria-label="Learning Path: Linux and Python" data-md-component="logo">
+    <a href="../../../index.html" title="Learning Path: Linux and Python" class="md-nav__button md-logo" aria-label="Learning Path: Linux and Python" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19 2-5 4.5v11l5-4.5zM6.5 5C4.55 5 2.45 5.4 1 6.5v14.66c0 .25.25.5.5.5.1 0 .15-.07.25-.07 1.35-.65 3.3-1.09 4.75-1.09 1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.31 4.75 1.06.1.05.15.03.25.03.25 0 .5-.25.5-.5V6.5c-.6-.45-1.25-.75-2-1V19c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V6.5C10.55 5.4 8.45 5 6.5 5"/></svg>
@@ -304,6 +316,18 @@
     </a>
     Learning Path: Linux and Python
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tsiendragon/learning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -314,7 +338,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../../../index.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -379,7 +403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../01_linux_file_system/" class="md-nav__link">
+      <a href="01_linux_file_system.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -400,7 +424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02_permission_management/" class="md-nav__link">
+      <a href="02_permission_management.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -421,7 +445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../03_network_basics/" class="md-nav__link">
+      <a href="03_network_basics.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -442,7 +466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04_text_editors/" class="md-nav__link">
+      <a href="04_text_editors.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -463,7 +487,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../05_shell_scripting/" class="md-nav__link">
+      <a href="05_shell_scripting.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -504,7 +528,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="./" class="md-nav__link md-nav__link--active">
+      <a href="06_git_version_control.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -734,7 +758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../07_development_tools/" class="md-nav__link">
+      <a href="07_development_tools.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -755,7 +779,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../08_networking_remote_operations/" class="md-nav__link">
+      <a href="08_networking_remote_operations.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -776,7 +800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../09_programming_environment/" class="md-nav__link">
+      <a href="09_programming_environment.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -797,7 +821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../10_performance_tuning/" class="md-nav__link">
+      <a href="10_performance_tuning.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -818,7 +842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../11_containers_virtualization/" class="md-nav__link">
+      <a href="11_containers_virtualization.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -839,7 +863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../12_file_data_processing/" class="md-nav__link">
+      <a href="12_file_data_processing.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -909,7 +933,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../phase2/python_basics/01_basic_syntax/" class="md-nav__link">
+      <a href="../../phase2/python_basics/01_basic_syntax.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -930,7 +954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../phase2/python_basics/02_functions_modules/" class="md-nav__link">
+      <a href="../../phase2/python_basics/02_functions_modules.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -951,7 +975,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../phase2/python_basics/03_classes_objects/" class="md-nav__link">
+      <a href="../../phase2/python_basics/03_classes_objects.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -972,7 +996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../phase2/python_basics/04_common_libraries/" class="md-nav__link">
+      <a href="../../phase2/python_basics/04_common_libraries.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -993,7 +1017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../phase2/python_basics/05_best_practices/" class="md-nav__link">
+      <a href="../../phase2/python_basics/05_best_practices.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1014,7 +1038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../phase2/python_basics/06_algorithms_techniques/" class="md-nav__link">
+      <a href="../../phase2/python_basics/06_algorithms_techniques.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1042,7 +1066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../mkdocs_deployment_guide/" class="md-nav__link">
+      <a href="../../mkdocs_deployment_guide.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1068,6 +1092,9 @@
               <article class="md-content__inner md-typeset">
                 
                   
+
+  
+  
 
 
 <h1 id="git-version-control-system">Git Version Control System</h1>
@@ -1431,7 +1458,7 @@
 <li>进行 merge review 并合并 merge request：</li>
 <li>在代码评审通过后，合并 <code>zhangwei/feature/a</code> 到 <code>main</code>。</li>
 </ol>
-<p><img alt="alt text" src="../../../../images/image.png" /></p>
+<p><img alt="alt text" src="../../../images/image.png" /></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>main
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>git<span class="w"> </span>pull<span class="w">  </span><span class="c1"># 再次确保 main 是最新的</span>
 </code></pre></div>
@@ -1494,7 +1521,7 @@
 <h3 id="3-merge">3. merge 工作流程</h3>
 <p>张伟和小红在同一个项目上工作，他们需要分别开发不同的功能。
 分别模拟zhangwei 和 xiaohong 的工作流程。他们分别创建不同的分支.</p>
-<p>最开始的状态如下：<img alt="alt text" src="../../../../images/img_v3_02j1_1d30823c-798d-44e9-9d0e-854a30558bfh.jpg" /></p>
+<p>最开始的状态如下：<img alt="alt text" src="../../../images/img_v3_02j1_1d30823c-798d-44e9-9d0e-854a30558bfh.jpg" /></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># 小红：从最新的 main 分支创建功能分支</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>main
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>git<span class="w"> </span>pull<span class="w">  </span><span class="c1"># 确保 main 是最新的， 一般切换新分支之前，先pull以免落后，导致conflict</span>
@@ -1523,7 +1550,7 @@
 <a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add login validation&quot;</span>
 </code></pre></div>
 <p>目前状态应该是 zhangwei/feature/login 会提前main 两个提交</p>
-<p><img alt="alt text" src="../../../../images/img_v3_02j1_c562384b-a637-4247-a3ee-be794ed79e3h.jpg" /></p>
+<p><img alt="alt text" src="../../../images/img_v3_02j1_c562384b-a637-4247-a3ee-be794ed79e3h.jpg" /></p>
 <p>张伟提交merge request 到 main 并合并。</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># 张伟：提交并合并功能</span>
 <a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>zhangwei/feature/login
@@ -1535,7 +1562,7 @@
 <a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>main
 </code></pre></div>
 <p>merge 之后，main 保持和zhangwei/feature/login 同步
-   <img alt="merge" src="../../../../images/img_v3_02j1_9ca5eb4f-0c8d-4e0d-ab0f-a6052ef3789h.jpg" /></p>
+   <img alt="merge" src="../../../images/img_v3_02j1_9ca5eb4f-0c8d-4e0d-ab0f-a6052ef3789h.jpg" /></p>
 <ol>
 <li>同时，小红在开发注册功能：</li>
 </ol>
@@ -1559,7 +1586,7 @@
 <a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add login validation after register&quot;</span>
 </code></pre></div>
 此时的分支状态为</p>
-<p><img alt="branch status" src="../../../../images/img_v3_02j1_19a42460-9dc7-464e-ac95-8df176bdd32h.jpg" /></p>
+<p><img alt="branch status" src="../../../images/img_v3_02j1_19a42460-9dc7-464e-ac95-8df176bdd32h.jpg" /></p>
 <ol>
 <li>小红提交注册功能：</li>
 </ol>
@@ -1570,9 +1597,9 @@
 <a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>git<span class="w"> </span>merge<span class="w"> </span>main<span class="w">  </span><span class="c1"># 将最新的 main 合并到自己的功能分支</span>
 </code></pre></div>
 <p>这时可能会出现merge conflict, 因为小红和张伟都在修改register.txt，所以会出现conflict。</p>
-<p><img alt="alt text" src="../../../../images/img_v3_02j1_7df340e3-da11-4222-9a0d-82362df2140h.jpg" />
+<p><img alt="alt text" src="../../../images/img_v3_02j1_7df340e3-da11-4222-9a0d-82362df2140h.jpg" />
    在source control 中，点击conflict 文件, 查看冲突的内容，在编辑器中解决掉conflict。</p>
-<p><img alt="1" src="../../../../images/img_v3_02j1_4bf19a2a-f8a4-4f32-b6cc-485d5f9f8d8h.jpg" /></p>
+<p><img alt="1" src="../../../images/img_v3_02j1_4bf19a2a-f8a4-4f32-b6cc-485d5f9f8d8h.jpg" /></p>
 <p>解决完之后，提交合并的commit</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Merge branch &#39;main&#39; into &#39;xiaohong/feature/register&#39;&quot;</span>
 </code></pre></div>
@@ -1626,7 +1653,7 @@
 <a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add login page design&quot;</span>
 </code></pre></div>
 准备好的小红和张伟的分支应该如下</p>
-<p><img alt="alt text" src="../../../../images/img_v3_02j1_441e403c-774e-494b-b333-d46859de635h.jpg" /></p>
+<p><img alt="alt text" src="../../../images/img_v3_02j1_441e403c-774e-494b-b333-d46859de635h.jpg" /></p>
 <p>张伟发现小红的密码检查函数很实用，想要在登录功能中使用，但是还不想合并小红的所有提交。。</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># 查看小红分支的提交历史</span>
 <a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>git<span class="w"> </span>log<span class="w"> </span>xiaohong/feature/4
@@ -1653,7 +1680,7 @@
 <a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a><span class="c1"># 或者用 git cherry-pick 925a</span>
 </code></pre></div>
 这样张伟的分支中就把小红的密码检查函数pick 过来了。</p>
-<p><img alt="alt text" src="../../../../images/img_v3_02j1_bf7314a3-cb3d-42cd-9fcd-bfb8cc10372h.jpg" /></p>
+<p><img alt="alt text" src="../../../images/img_v3_02j1_bf7314a3-cb3d-42cd-9fcd-bfb8cc10372h.jpg" /></p>
 <p>如图所示 这两个commit 的内容一摸一样，但是他们的commit hash是不一样的。</p>
 <h3 id="5-git-rebase">5. git rebase</h3>
 <p>在 Git 版本控制中，git rebase 是一个强大的命令，主要用于整理提交历史，使其更加线性和清晰
@@ -1696,7 +1723,7 @@
 <a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>git<span class="w"> </span>push
 </code></pre></div>
 <p>现在main同步了小红的用户资料更新功能，但是张伟的支付功能还没有同步，所以需要在zhangwei/feature/payment 分支上进行rebase。 如果直接使用merge 会让main 分支出现分叉。如果想保持分支结构为线性，则需要用到rebase。</p>
-<p><img alt="alt text" src="../../../../images/img_v3_02j1_99edf2e6-a435-4db7-803d-3e042e6a549h.jpg" /></p>
+<p><img alt="alt text" src="../../../images/img_v3_02j1_99edf2e6-a435-4db7-803d-3e042e6a549h.jpg" /></p>
 <p>张伟随后开始使用 rebase 合并到自己的分支</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1"># 首先更新 main 分支</span>
 <a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>git<span class="w"> </span>checkout<span class="w"> </span>main
@@ -1713,21 +1740,21 @@
 <a id="__codelineno-31-13" name="__codelineno-31-13" href="#__codelineno-31-13"></a><span class="c1"># 因为 rebase 改变了历史，需要强制推送</span>
 <a id="__codelineno-31-14" name="__codelineno-31-14" href="#__codelineno-31-14"></a>git<span class="w"> </span>push<span class="w"> </span>--force-with-lease<span class="w"> </span>origin<span class="w"> </span>zhangwei/feature/payment
 </code></pre></div>
-<p><img alt="alt text" src="../../../../images/img_v3_02j1_9def9150-31f6-4bfd-94cb-fe0cc1a2318h.jpg" /></p>
+<p><img alt="alt text" src="../../../images/img_v3_02j1_9def9150-31f6-4bfd-94cb-fe0cc1a2318h.jpg" /></p>
 <p>现在zhangwei/feature/payment 分支和main 分支都是线性的了，如上图</p>
 <p>登陆github 页面，创建merge request，按下图所示依次执行。
-<img alt="alt text" src="../../../../images/image-1.png" /></p>
-<p><img alt="alt text" src="../../../../images/image-2.png" /></p>
-<p><img alt="alt text" src="../../../../images/image-3.png" />
+<img alt="alt text" src="../../../images/image-1.png" /></p>
+<p><img alt="alt text" src="../../../images/image-2.png" /></p>
+<p><img alt="alt text" src="../../../images/image-3.png" />
 注意需要在merge request 中选择rebase and merge选项
-<img alt="alt text" src="../../../../images/image-5.png" />
+<img alt="alt text" src="../../../images/image-5.png" />
 如果是merge 则main 就会出现分叉
-<img alt="alt text" src="../../../../images/image-4.png" /></p>
+<img alt="alt text" src="../../../images/image-4.png" /></p>
 <p>本地同步跟新</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>git<span class="w"> </span>checkout<span class="w"> </span>main
 <a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>git<span class="w"> </span>pull
 </code></pre></div>
-<img alt="alt text" src="../../../../images/img_v3_02j1_3b97bc92-693e-4439-88b8-e832441434ch.jpg" /></p>
+<img alt="alt text" src="../../../images/img_v3_02j1_3b97bc92-693e-4439-88b8-e832441434ch.jpg" /></p>
 <p>现在main 分支也是线性了 同时同步了zhangwei 分支的更新.</p>
 <p>注意事项：</p>
 <ul>
@@ -1741,13 +1768,13 @@
 <h3 id="6-git-reset">6. git reset</h3>
 <p>一个简单的例子</p>
 <p>刚开始的状态
-<img alt="alt text" src="../../../../images/img_v3_02j1_9a07a55c-942e-46d8-8a85-b2b781e9d90h.jpg" /></p>
+<img alt="alt text" src="../../../images/img_v3_02j1_9a07a55c-942e-46d8-8a85-b2b781e9d90h.jpg" /></p>
 <p>想把main reset 到合并之前的状态</p>
 <p>找到合并之前的commit hash</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>git reset --hard e806bd
 </code></pre></div>
 rest之后的状态
-<img alt="alt text" src="../../../../images/img_v3_02j1_0746705c-4ea7-4c78-ac5a-5f48dbb171eh.jpg" /></p>
+<img alt="alt text" src="../../../images/img_v3_02j1_0746705c-4ea7-4c78-ac5a-5f48dbb171eh.jpg" /></p>
 <p>更进一步，<code>git reset</code> 有三种模式：</p>
 <ul>
 <li><code>--soft</code>：仅重置 HEAD 到指定提交，保留暂存区和工作目录的更改</li>
@@ -1831,7 +1858,7 @@ rest之后的状态
 <a id="__codelineno-37-16" name="__codelineno-37-16" href="#__codelineno-37-16"></a>      experiment/untracked.txt
 </code></pre></div>
 <p>在vscode 的source countrol 中也可以看到各个文件的状态</p>
-<p><img alt="alt text" src="../../../../images/img_v3_02j1_9e0756be-5c30-4ea0-b7bf-f3b325206b1h.jpg" /></p>
+<p><img alt="alt text" src="../../../images/img_v3_02j1_9e0756be-5c30-4ea0-b7bf-f3b325206b1h.jpg" /></p>
 <ul>
 <li>R 表示renamed</li>
 <li>M 表示modified</li>
@@ -1905,7 +1932,7 @@ Update config settings 的commit 没有了，但是其他的文件状态都没�
 <a id="__codelineno-42-8" name="__codelineno-42-8" href="#__codelineno-42-8"></a>rm<span class="w"> </span>experiment/login.txt
 </code></pre></div>
 <p>各种文件的状态
-<img alt="alt text" src="../../../../images/img_v3_02j1_6bf38427-29bd-4f0e-bb8a-818e43751feh.jpg" /></p>
+<img alt="alt text" src="../../../images/img_v3_02j1_6bf38427-29bd-4f0e-bb8a-818e43751feh.jpg" /></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>git<span class="w"> </span>reset<span class="w"> </span>HEAD~2<span class="w">  </span><span class="c1"># 或 git reset --mixed HEAD~1</span>
 <a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>git<span class="w"> </span>status
 <a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>&gt;&gt;&gt;<span class="w"> </span>Changes<span class="w"> </span>not<span class="w"> </span>staged<span class="w"> </span><span class="k">for</span><span class="w"> </span>commit:
@@ -1929,9 +1956,9 @@ Update config settings 的commit 没有了，但是其他的文件状态都没�
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>git reset @{1} # 回复到前两个commit
 </code></pre></div>
 丢弃所有修改</p>
-<p><img alt="alt text" src="../../../../images/img_v3_02j1_41bdf8f6-0738-4101-851d-0754bfee84ch.jpg" /></p>
+<p><img alt="alt text" src="../../../images/img_v3_02j1_41bdf8f6-0738-4101-851d-0754bfee84ch.jpg" /></p>
 <p>现在所有修改的都没有了
-<img alt="alt text" src="../../../../images/img_v3_02j1_5170ce8e-e28f-442c-a88f-1f534051bddh.jpg" /></p>
+<img alt="alt text" src="../../../images/img_v3_02j1_5170ce8e-e28f-442c-a88f-1f534051bddh.jpg" /></p>
 <p>再模拟各种各种文件状态</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>git<span class="w"> </span>mv<span class="w"> </span>experiment/register.txt<span class="w"> </span>experiment/register_func.txt
 <a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;staged&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>experiment/staged.txt
@@ -1944,12 +1971,12 @@ Update config settings 的commit 没有了，但是其他的文件状态都没�
 <a id="__codelineno-45-9" name="__codelineno-45-9" href="#__codelineno-45-9"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;config update 2&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>experiment/config.txt
 </code></pre></div>
 <p>目前的状态</p>
-<p><img alt="alt text" src="../../../../images/img_v3_02j1_0fb048cd-c120-45e2-8d3f-94943854ad2h.jpg" /></p>
+<p><img alt="alt text" src="../../../images/img_v3_02j1_0fb048cd-c120-45e2-8d3f-94943854ad2h.jpg" /></p>
 <p>config.txt 内容
-<img alt="alt text" src="../../../../images/img_v3_02j1_7e794a1e-eeb0-4ff1-ac75-4c8adf51587h.jpg" /></p>
+<img alt="alt text" src="../../../images/img_v3_02j1_7e794a1e-eeb0-4ff1-ac75-4c8adf51587h.jpg" /></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>HEAD~2<span class="w"> </span><span class="c1"># reset 连个commit</span>
 </code></pre></div>
-<p><img alt="alt text" src="../../../../images/img_v3_02j1_dbbe18cb-dd04-47ad-ba51-4ab87bafb53h.jpg" /></p>
+<p><img alt="alt text" src="../../../images/img_v3_02j1_dbbe18cb-dd04-47ad-ba51-4ab87bafb53h.jpg" /></p>
 <p>reset 之后只剩下两个commit，同时source control 只剩下untracked.txt</p>
 <p><strong>Git <code>reset</code> 命令对不同文件状态的影响</strong></p>
 <table>
@@ -2111,10 +2138,10 @@ Update config settings 的commit 没有了，但是其他的文件状态都没�
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tabs", "toc.integrate", "navigation.top", "search.highlight", "navigation.expand", "navigation.sections", "content.code.copy", "content.code.annotate"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "toc.integrate", "navigation.top", "search.highlight", "navigation.expand", "navigation.sections", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
       
     
   </body>
