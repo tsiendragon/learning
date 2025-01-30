@@ -530,6 +530,48 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#user-management-and-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Management and Information
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User Management and Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-user-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic User Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-user-information-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding User Information Output
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Examples
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercises" class="md-nav__link">
     <span class="md-ellipsis">
       Exercises
@@ -540,18 +582,36 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#exercise-1" class="md-nav__link">
+  <a href="#exercise-1-permission" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 1
+      Exercise 1 Permission
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#exercise-2" class="md-nav__link">
+  <a href="#exercise-2-owner" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 2
+      Exercise 2 Owner
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4
     </span>
   </a>
   
@@ -559,6 +619,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Questions
+    </span>
+  </a>
   
 </li>
       
@@ -1030,16 +1099,18 @@
 <li><strong>Group permissions</strong>: <code>r-x</code> (read, execute)</li>
 <li><strong>Others permissions</strong>: <code>r--</code> (read)</li>
 </ul>
-<p>Each permission is represented by a character:
-- <code>r</code>: Read permission
-- <code>w</code>: Write permission
-- <code>x</code>: Execute permission
-- <code>-</code>: No permission</p>
+<p>Each permission is represented by a character:</p>
+<ul>
+<li><code>r</code>: Read permission</li>
+<li><code>w</code>: Write permission</li>
+<li><code>x</code>: Execute permission</li>
+<li><code>-</code>: No permission</li>
+</ul>
 <h2 id="viewing-permissions">Viewing Permissions</h2>
 <p>To view the permissions of files and directories, use the <code>ls -l</code> command:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ls<span class="w"> </span>-l
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ls<span class="w"> </span>-l
 </code></pre></div>
-This command lists files and directories in the current directory along with their permissions, ownership, and other details.</p>
+<p>This command lists files and directories in the current directory along with their permissions, ownership, and other details.</p>
 <p>Output looks like:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>total 24
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>-rwxrwxrwx 1 1025 users 11357 Dec  9 23:21  LICENSE
@@ -1162,47 +1233,382 @@ This command lists files and directories in the current directory along with the
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>chown<span class="w"> </span>:group<span class="w"> </span>filename
 </code></pre></div>
+<h2 id="user-management-and-information">User Management and Information</h2>
+<p>In Linux, understanding user management is crucial as it's closely tied to file permissions. Here are essential commands for viewing and managing user information:</p>
+<h3 id="basic-user-commands">Basic User Commands</h3>
+<ol>
+<li><strong>View Current User</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>whoami
+</code></pre></div>
+<p>Shows the username of the currently logged-in user.</p>
+<ol>
+<li><strong>View User ID and Groups</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>id
+</code></pre></div>
+<p>Displays detailed information about your user ID (UID), primary group ID (GID), and supplementary groups.</p>
+<ol>
+<li><strong>List User Groups</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>groups
+</code></pre></div>
+<p>Shows all groups the current user belongs to.</p>
+<ol>
+<li><strong>View Logged-in Users</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>who
+</code></pre></div>
+<p>Lists all users currently logged into the system.</p>
+<ol>
+<li><strong>Detailed User Activity</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>w
+</code></pre></div>
+<p>Shows who is logged in and what they're doing.</p>
+<h3 id="understanding-user-information-output">Understanding User Information Output</h3>
+<p>When you run <code>id</code>, you'll see output like:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>id
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>&gt;&gt;&gt;<span class="w"> </span><span class="nv">uid</span><span class="o">=</span><span class="m">1000</span><span class="o">(</span>username<span class="o">)</span><span class="w"> </span><span class="nv">gid</span><span class="o">=</span><span class="m">1000</span><span class="o">(</span>primary_group<span class="o">)</span><span class="w"> </span><span class="nv">groups</span><span class="o">=</span><span class="m">1000</span><span class="o">(</span>primary_group<span class="o">)</span>,4<span class="o">(</span>adm<span class="o">)</span>,24<span class="o">(</span>cdrom<span class="o">)</span>,27<span class="o">(</span>sudo<span class="o">)</span>
+</code></pre></div>
+<p>This shows:</p>
+<ul>
+<li>Your user ID (uid)</li>
+<li>Your primary group ID (gid)</li>
+<li>All groups you belong to</li>
+</ul>
+<h3 id="practical-examples">Practical Examples</h3>
+<ol>
+<li><strong>Check Your Username</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>whoami
+</code></pre></div>
+<p>Output example: <code>john</code></p>
+<ol>
+<li><strong>View Your Group Memberships</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>groups
+</code></pre></div>
+<p>Output example: <code>john adm cdrom sudo</code></p>
+<ol>
+<li><strong>Get Detailed User Information</strong>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>id
+</code></pre></div>
+<p>Output example: <code>uid=1000(john) gid=1000(john) groups=1000(john),4(adm),27(sudo)</code></p>
 <h2 id="exercises">Exercises</h2>
 <p>Test your understanding with the following exercises:</p>
-<h3 id="exercise-1">Exercise 1</h3>
+<h3 id="exercise-1-permission">Exercise 1 Permission</h3>
 <p>Create a file named <code>experiment/test.sh</code> with content</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hello world&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hello world&quot;</span>
 </code></pre></div>
-and set its permissions so that:
-  - The user can read, write, and execute.
-  - The group can read and execute.
-  - Others have no permissions.
-  - you (the user) can run the file by typing <code>bash experiment/test.sh</code> which returned "hello world"</p>
-<p>Try you self first and then check with the following soluction to compare the status of the file. Solution may not be unique</p>
+<p>and set its permissions so that:</p>
+<ul>
+<li>The user can read, write, and execute.</li>
+<li>The group can read and execute.</li>
+<li>Others have no permissions.</li>
+<li>you (the user) can run the file by typing <code>bash experiment/test.sh</code> which returned "hello world"</li>
+</ul>
+<p>Try you self first and then check with the following solusion to compare the status of the file. Solution may not be unique</p>
 <p><strong>Solution:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Create the file</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>touch<span class="w"> </span>experiment/test.sh
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;echo &#39;hello world&#39; &gt; experiment/test.sh</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="s2">ls -l experiment/test.sh</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="s2">-rw-r--r-- 1 user group 0 Jan 30 22:49 experiment/test.sh    # Initial state</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="s2"># Add content to the file</span>
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="s2"># Change permissions</span>
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="s2">chmod 750 experiment/test.sh</span>
-<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="s2">ls -l experiment/test.sh</span>
-<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="s2">-rwxr-x--- 1 user group 11 Jan 30 22:49 experiment/test.sh   # Final state</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Create the file</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>touch<span class="w"> </span>experiment/test.sh
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;echo &#39;hello world&#39; &gt; experiment/test.sh</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="s2">ls -l experiment/test.sh</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="s2">-rw-r--r-- 1 user group 0 Jan 30 22:49 experiment/test.sh    # Initial state</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="s2"># Add content to the file</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a><span class="s2"># Change permissions</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a><span class="s2">chmod 750 experiment/test.sh</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a><span class="s2">ls -l experiment/test.sh</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a><span class="s2">-rwxr-x--- 1 user group 11 Jan 30 22:49 experiment/test.sh   # Final state</span>
 </code></pre></div>
-<h3 id="exercise-2">Exercise 2</h3>
-<p>Change the group ownership of a directory
-1. Make a directory named <code>experiment/a</code> and a file named <code>test.sh</code> in it.
-2. change the group ownership of <code>experiment/a</code> to <code>editors</code></p>
+<h3 id="exercise-2-owner">Exercise 2 Owner</h3>
+<p>Before doing the excersie, please follow the step to open the root user in mac if you are mac user</p>
+<p>Use Directory Utility: <a href="https://support.apple.com/en-gb/102367">https://support.apple.com/en-gb/102367</a>
+  Use Spotlight to find and open Directory Utility, or follow these steps:</p>
+<p>From the menu bar in the Finder, choose Go &gt; Go to Folder.</p>
+<p>Type or paste /System/Library/CoreServices/Applications/, then press Return.</p>
+<p>Open Directory Utility from the window that opens.</p>
+<p>To enable or disable the root user
+  In the Directory Utility window, click the lock lock icon, then enter an administrator name and password.</p>
+<p>To enable the root user, choose Edit &gt; Enable Root User from the menu bar. Then enter the password you want to use. You can then log in as the root user.</p>
+<p>To disable the root user, choose Edit &gt; Disable Root User.</p>
+<p>Complex Directory and File Permissions</p>
+<p>First, let's check the current system users and groups:</p>
+<ol>
+<li>Check system information:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Check current user and groups</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>whoami<span class="w"> </span><span class="c1"># show current user</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>id<span class="w"> </span>-gn<span class="w"> </span><span class="c1"># show current user&#39;s group</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="c1"># View available system users</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>cat<span class="w"> </span>/etc/passwd<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;/bin/bash|/bin/sh&#39;</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="c1"># View system groups</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>cat<span class="w"> </span>/etc/group<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;root|nobody|users|wheel&#39;</span>
+</code></pre></div>
+<p>Now, create a project structure under the experiment folder with specific ownership and permissions:</p>
+<ol>
+<li>Create the following structure:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>experiment/
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>└──<span class="w"> </span>project/
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="w">    </span>├──<span class="w"> </span>src/
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>main.py
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>config.json
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">    </span>└──<span class="w"> </span>logs/
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="w">        </span>└──<span class="w"> </span>app.log
+</code></pre></div>
+<ol>
+<li>Set up the following requirements:</li>
+<li>The <code>experiment/project</code> directory should be owned by your current user and group <code>users</code></li>
+<li>The <code>experiment/project/src</code> directory and its contents should be:<ul>
+<li>Owned by your current user and group <code>root</code></li>
+<li>Root group members can read and execute the directory</li>
+<li>Others can only execute the directory</li>
+</ul>
+</li>
+<li>For <code>experiment/project/src/main.py</code>:<ul>
+<li>Owned by your current user and group <code>root</code></li>
+<li>Your user can read and write</li>
+<li>Root group can only read</li>
+<li>Others have no permissions</li>
+</ul>
+</li>
+<li>For <code>experiment/project/src/config.json</code>:<ul>
+<li>Owned by <code>root</code> user and group <code>root</code></li>
+<li>Only root can read and write</li>
+<li>No permissions for anyone else</li>
+</ul>
+</li>
+<li>
+<p>The <code>experiment/project/logs</code> directory and <code>app.log</code>:</p>
+<ul>
+<li>Owned by your current user and group <code>nobody</code></li>
+<li>Your user and nobody group can read and write</li>
+<li>Others can only read</li>
+</ul>
+</li>
+<li>
+<p>for mac user, change group 'root' to 'wheel', and change group 'users' to 'staff', which is a different in linux and mac</p>
+</li>
+</ol>
 <p><strong>Solution:</strong></p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>chown<span class="w"> </span>:editors<span class="w"> </span>experiment/a
+<p><strong>Solution for macOS:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># First, check your username and groups</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="nv">CURRENT_USER</span><span class="o">=</span><span class="k">$(</span>whoami<span class="k">)</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="c1"># Create directory structure</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>experiment/project/src<span class="w"> </span>experiment/project/logs
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>touch<span class="w"> </span>experiment/project/src/main.py<span class="w"> </span>experiment/project/src/config.json<span class="w"> </span>experiment/project/logs/app.log
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="c1"># Set directory ownership</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="c1"># Use wheel group instead of users group (macOS specific)</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>chown<span class="w"> </span><span class="si">${</span><span class="nv">CURRENT_USER</span><span class="si">}</span>:staff<span class="w"> </span>experiment/project
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>chown<span class="w"> </span>-R<span class="w"> </span><span class="si">${</span><span class="nv">CURRENT_USER</span><span class="si">}</span>:wheel<span class="w"> </span>experiment/project/src
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="c1"># Only root can own and access this file</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>sudo<span class="w"> </span>chown<span class="w"> </span>root:wheel<span class="w"> </span>experiment/project/src/config.json
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a>chown<span class="w"> </span>-R<span class="w"> </span><span class="nv">$CURRENT_USER</span>:staff<span class="w"> </span>experiment/project/logs
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="c1"># Set directory permissions</span>
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>experiment/project<span class="w">          </span><span class="c1"># rwxr-xr-x (everyone can read and execute)</span>
+<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a>chmod<span class="w"> </span><span class="m">750</span><span class="w"> </span>experiment/project/src<span class="w">      </span><span class="c1"># rwxr-x--- (only owner and wheel group)</span>
+<a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>experiment/project/logs<span class="w">     </span><span class="c1"># rwxr-xr-x (everyone can read and execute)</span>
+<a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a>
+<a id="__codelineno-22-21" name="__codelineno-22-21" href="#__codelineno-22-21"></a><span class="c1"># Set file permissions</span>
+<a id="__codelineno-22-22" name="__codelineno-22-22" href="#__codelineno-22-22"></a>chmod<span class="w"> </span><span class="m">640</span><span class="w"> </span>experiment/project/src/main.py<span class="w">     </span><span class="c1"># rw-r----- (owner can read/write, wheel group can read)</span>
+<a id="__codelineno-22-23" name="__codelineno-22-23" href="#__codelineno-22-23"></a>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>experiment/project/src/config.json<span class="w">  </span><span class="c1"># rw------- (only root can access)</span>
+<a id="__codelineno-22-24" name="__codelineno-22-24" href="#__codelineno-22-24"></a>chmod<span class="w"> </span><span class="m">664</span><span class="w"> </span>experiment/project/logs/app.log<span class="w">     </span><span class="c1"># rw-rw-r-- (owner and staff group can read/write)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>3. **Exercise 3**
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>Remove write permission for others from all files in the current directory.
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>**Solution:**
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>```bash
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>chmod o-w *
-</code></pre></div></p>
+<p>Verify the setup with:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Check all permissions and ownership</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>ls<span class="w"> </span>-la<span class="w"> </span>experiment/project/
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># Verify specific permissions</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Testing owner permissions...&quot;</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="nb">test</span><span class="w"> </span>-r<span class="w"> </span>experiment/project/src/main.py<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✓ Can read main.py&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✗ Cannot read main.py&quot;</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="nb">test</span><span class="w"> </span>-w<span class="w"> </span>experiment/project/src/main.py<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✓ Can write main.py&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✗ Cannot write main.py&quot;</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;\nTesting root-owned file...&quot;</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>sudo<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-r<span class="w"> </span>experiment/project/src/config.json<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✓ Root can read config.json&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✗ Root cannot read config.json&quot;</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>sudo<span class="w"> </span><span class="nb">test</span><span class="w"> </span>-w<span class="w"> </span>experiment/project/src/config.json<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✓ Root can write config.json&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✗ Root cannot write config.json&quot;</span>
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;\nTesting log file permissions...&quot;</span>
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="nb">test</span><span class="w"> </span>-w<span class="w"> </span>experiment/project/logs/app.log<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✓ Can write to app.log&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;✗ Cannot write to app.log&quot;</span>
+</code></pre></div>
+<p>Key differences for macOS:</p>
+<ol>
+<li>Using <code>wheel</code> group instead of <code>root</code> group (wheel is the admin group in macOS)</li>
+<li>Using <code>staff</code> group for general access (common group for macOS users)</li>
+<li>Root user must be enabled to use root ownership</li>
+<li>Using <code>sudo</code> for root operations</li>
+<li>Group permissions focus on <code>wheel</code> and <code>staff</code> instead of custom groups</li>
+</ol>
+<p>Note: To use these commands effectively:</p>
+<ul>
+<li>Root user must be enabled (see Directory Utility instructions above)</li>
+<li>Your user must be a member of the wheel group</li>
+<li>Use <code>sudo</code> when changing ownership to root</li>
+<li>The <code>staff</code> group is used instead of <code>nobody</code> as it's more common in macOS</li>
+</ul>
+<h3 id="exercise-3">Exercise 3</h3>
+<p>Remove write permission for others from all files in the current directory.
+<strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>chmod<span class="w"> </span>o-w<span class="w"> </span>*
+</code></pre></div>
+<h3 id="exercise-4">Exercise 4</h3>
+<p>Testing File Permissions with Bash Scripts</p>
+<p>Create a set of test files with different permissions and verify access:</p>
+<ol>
+<li>Create the following test files under <code>experiment/permission_test/</code>:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>experiment/permission_test/
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>├── read_only.sh        # Only readable
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>├── write_only.sh       # Only writable
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>├── execute_only.sh     # Only executable
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>├── read_write.sh       # Readable and writable
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>├── read_execute.sh     # Readable and executable
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>└── test_permissions.sh # Main test script
+</code></pre></div>
+<ol>
+<li>Set up the test files with this content:</li>
+</ol>
+<p>For <code>test_permissions.sh</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="ch">#!/bin/bash</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="c1"># Colors for output</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="nv">GREEN</span><span class="o">=</span><span class="s1">&#39;\033[0;32m&#39;</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="nv">RED</span><span class="o">=</span><span class="s1">&#39;\033[0;31m&#39;</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="nv">NC</span><span class="o">=</span><span class="s1">&#39;\033[0m&#39;</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>check_permission<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">file</span><span class="o">=</span><span class="nv">$1</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">expected</span><span class="o">=</span><span class="nv">$2</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">desc</span><span class="o">=</span><span class="nv">$3</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="w">    </span><span class="c1"># Test read permission</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$expected</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span><span class="s2">&quot;r&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span>cat<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span><span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">GREEN</span><span class="si">}</span><span class="s2">✓ Can read </span><span class="nv">$file</span><span class="s2"> (Expected)</span><span class="si">${</span><span class="nv">NC</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a><span class="w">        </span><span class="k">else</span>
+<a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">RED</span><span class="si">}</span><span class="s2">✗ Cannot read </span><span class="nv">$file</span><span class="s2"> (Should be readable)</span><span class="si">${</span><span class="nv">NC</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a><span class="w">        </span><span class="k">fi</span>
+<a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a><span class="w">    </span><span class="k">else</span>
+<a id="__codelineno-26-22" name="__codelineno-26-22" href="#__codelineno-26-22"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span>cat<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span><span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-26-23" name="__codelineno-26-23" href="#__codelineno-26-23"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">RED</span><span class="si">}</span><span class="s2">✗ Can read </span><span class="nv">$file</span><span class="s2"> (Should not be readable)</span><span class="si">${</span><span class="nv">NC</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-26-24" name="__codelineno-26-24" href="#__codelineno-26-24"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-26-25" name="__codelineno-26-25" href="#__codelineno-26-25"></a><span class="w">        </span><span class="k">else</span>
+<a id="__codelineno-26-26" name="__codelineno-26-26" href="#__codelineno-26-26"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">GREEN</span><span class="si">}</span><span class="s2">✓ Cannot read </span><span class="nv">$file</span><span class="s2"> (Expected)</span><span class="si">${</span><span class="nv">NC</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-26-27" name="__codelineno-26-27" href="#__codelineno-26-27"></a><span class="w">        </span><span class="k">fi</span>
+<a id="__codelineno-26-28" name="__codelineno-26-28" href="#__codelineno-26-28"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-26-29" name="__codelineno-26-29" href="#__codelineno-26-29"></a>
+<a id="__codelineno-26-30" name="__codelineno-26-30" href="#__codelineno-26-30"></a><span class="w">    </span><span class="c1"># Test write permission</span>
+<a id="__codelineno-26-31" name="__codelineno-26-31" href="#__codelineno-26-31"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$expected</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span><span class="s2">&quot;w&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-26-32" name="__codelineno-26-32" href="#__codelineno-26-32"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span>&gt;&gt;<span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-26-33" name="__codelineno-26-33" href="#__codelineno-26-33"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">GREEN</span><span class="si">}</span><span class="s2">✓ Can write to </span><span class="nv">$file</span><span class="s2"> (Expected)</span><span class="si">${</span><span class="nv">NC</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-26-34" name="__codelineno-26-34" href="#__codelineno-26-34"></a><span class="w">        </span><span class="k">else</span>
+<a id="__codelineno-26-35" name="__codelineno-26-35" href="#__codelineno-26-35"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">RED</span><span class="si">}</span><span class="s2">✗ Cannot write to </span><span class="nv">$file</span><span class="s2"> (Should be writable)</span><span class="si">${</span><span class="nv">NC</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-26-36" name="__codelineno-26-36" href="#__codelineno-26-36"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-26-37" name="__codelineno-26-37" href="#__codelineno-26-37"></a><span class="w">        </span><span class="k">fi</span>
+<a id="__codelineno-26-38" name="__codelineno-26-38" href="#__codelineno-26-38"></a><span class="w">    </span><span class="k">else</span>
+<a id="__codelineno-26-39" name="__codelineno-26-39" href="#__codelineno-26-39"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span>&gt;&gt;<span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-26-40" name="__codelineno-26-40" href="#__codelineno-26-40"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">RED</span><span class="si">}</span><span class="s2">✗ Can write to </span><span class="nv">$file</span><span class="s2"> (Should not be writable)</span><span class="si">${</span><span class="nv">NC</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-26-41" name="__codelineno-26-41" href="#__codelineno-26-41"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-26-42" name="__codelineno-26-42" href="#__codelineno-26-42"></a><span class="w">        </span><span class="k">else</span>
+<a id="__codelineno-26-43" name="__codelineno-26-43" href="#__codelineno-26-43"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">GREEN</span><span class="si">}</span><span class="s2">✓ Cannot write to </span><span class="nv">$file</span><span class="s2"> (Expected)</span><span class="si">${</span><span class="nv">NC</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-26-44" name="__codelineno-26-44" href="#__codelineno-26-44"></a><span class="w">        </span><span class="k">fi</span>
+<a id="__codelineno-26-45" name="__codelineno-26-45" href="#__codelineno-26-45"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-26-46" name="__codelineno-26-46" href="#__codelineno-26-46"></a>
+<a id="__codelineno-26-47" name="__codelineno-26-47" href="#__codelineno-26-47"></a><span class="w">    </span><span class="c1"># Test execute permission</span>
+<a id="__codelineno-26-48" name="__codelineno-26-48" href="#__codelineno-26-48"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$expected</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-q<span class="w"> </span><span class="s2">&quot;x&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-26-49" name="__codelineno-26-49" href="#__codelineno-26-49"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-x<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-26-50" name="__codelineno-26-50" href="#__codelineno-26-50"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">GREEN</span><span class="si">}</span><span class="s2">✓ Can execute </span><span class="nv">$file</span><span class="s2"> (Expected)</span><span class="si">${</span><span class="nv">NC</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-26-51" name="__codelineno-26-51" href="#__codelineno-26-51"></a><span class="w">        </span><span class="k">else</span>
+<a id="__codelineno-26-52" name="__codelineno-26-52" href="#__codelineno-26-52"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">RED</span><span class="si">}</span><span class="s2">✗ Cannot execute </span><span class="nv">$file</span><span class="s2"> (Should be executable)</span><span class="si">${</span><span class="nv">NC</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-26-53" name="__codelineno-26-53" href="#__codelineno-26-53"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-26-54" name="__codelineno-26-54" href="#__codelineno-26-54"></a><span class="w">        </span><span class="k">fi</span>
+<a id="__codelineno-26-55" name="__codelineno-26-55" href="#__codelineno-26-55"></a><span class="w">    </span><span class="k">else</span>
+<a id="__codelineno-26-56" name="__codelineno-26-56" href="#__codelineno-26-56"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-x<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-26-57" name="__codelineno-26-57" href="#__codelineno-26-57"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">RED</span><span class="si">}</span><span class="s2">✗ Can execute </span><span class="nv">$file</span><span class="s2"> (Should not be executable)</span><span class="si">${</span><span class="nv">NC</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-26-58" name="__codelineno-26-58" href="#__codelineno-26-58"></a><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-26-59" name="__codelineno-26-59" href="#__codelineno-26-59"></a><span class="w">        </span><span class="k">else</span>
+<a id="__codelineno-26-60" name="__codelineno-26-60" href="#__codelineno-26-60"></a><span class="w">            </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">GREEN</span><span class="si">}</span><span class="s2">✓ Cannot execute </span><span class="nv">$file</span><span class="s2"> (Expected)</span><span class="si">${</span><span class="nv">NC</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-26-61" name="__codelineno-26-61" href="#__codelineno-26-61"></a><span class="w">        </span><span class="k">fi</span>
+<a id="__codelineno-26-62" name="__codelineno-26-62" href="#__codelineno-26-62"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-26-63" name="__codelineno-26-63" href="#__codelineno-26-63"></a>
+<a id="__codelineno-26-64" name="__codelineno-26-64" href="#__codelineno-26-64"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;----------------------------------------&quot;</span>
+<a id="__codelineno-26-65" name="__codelineno-26-65" href="#__codelineno-26-65"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-26-66" name="__codelineno-26-66" href="#__codelineno-26-66"></a><span class="o">}</span>
+<a id="__codelineno-26-67" name="__codelineno-26-67" href="#__codelineno-26-67"></a>
+<a id="__codelineno-26-68" name="__codelineno-26-68" href="#__codelineno-26-68"></a><span class="c1"># Test each file</span>
+<a id="__codelineno-26-69" name="__codelineno-26-69" href="#__codelineno-26-69"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Testing file permissions...&quot;</span>
+<a id="__codelineno-26-70" name="__codelineno-26-70" href="#__codelineno-26-70"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;----------------------------------------&quot;</span>
+<a id="__codelineno-26-71" name="__codelineno-26-71" href="#__codelineno-26-71"></a>
+<a id="__codelineno-26-72" name="__codelineno-26-72" href="#__codelineno-26-72"></a>check_permission<span class="w"> </span><span class="s2">&quot;read_only.sh&quot;</span><span class="w"> </span><span class="s2">&quot;r&quot;</span><span class="w"> </span><span class="s2">&quot;read-only file&quot;</span>
+<a id="__codelineno-26-73" name="__codelineno-26-73" href="#__codelineno-26-73"></a>check_permission<span class="w"> </span><span class="s2">&quot;write_only.sh&quot;</span><span class="w"> </span><span class="s2">&quot;w&quot;</span><span class="w"> </span><span class="s2">&quot;write-only file&quot;</span>
+<a id="__codelineno-26-74" name="__codelineno-26-74" href="#__codelineno-26-74"></a>check_permission<span class="w"> </span><span class="s2">&quot;execute_only.sh&quot;</span><span class="w"> </span><span class="s2">&quot;x&quot;</span><span class="w"> </span><span class="s2">&quot;execute-only file&quot;</span>
+<a id="__codelineno-26-75" name="__codelineno-26-75" href="#__codelineno-26-75"></a>check_permission<span class="w"> </span><span class="s2">&quot;read_write.sh&quot;</span><span class="w"> </span><span class="s2">&quot;rw&quot;</span><span class="w"> </span><span class="s2">&quot;read-write file&quot;</span>
+<a id="__codelineno-26-76" name="__codelineno-26-76" href="#__codelineno-26-76"></a>check_permission<span class="w"> </span><span class="s2">&quot;read_execute.sh&quot;</span><span class="w"> </span><span class="s2">&quot;rx&quot;</span><span class="w"> </span><span class="s2">&quot;read-execute file&quot;</span>
+</code></pre></div>
+<ol>
+<li>Create the test files and set their permissions:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># Create test directory</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>experiment/permission_test
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="nb">cd</span><span class="w"> </span>experiment/permission_test
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="c1"># Create test files with some content</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;echo &#39;This is a read-only file&#39;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>read_only.sh
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;echo &#39;This is a write-only file&#39;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>write_only.sh
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;echo &#39;This is an execute-only file&#39;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>execute_only.sh
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;echo &#39;This is a read-write file&#39;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>read_write.sh
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;echo &#39;This is a read-execute file&#39;&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>read_execute.sh
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a><span class="c1"># Copy the test_permissions.sh content from above</span>
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>test_permissions.sh<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<a id="__codelineno-27-14" name="__codelineno-27-14" href="#__codelineno-27-14"></a><span class="s">#!/bin/bash</span>
+<a id="__codelineno-27-15" name="__codelineno-27-15" href="#__codelineno-27-15"></a><span class="s"># ... (content from above) ...</span>
+<a id="__codelineno-27-16" name="__codelineno-27-16" href="#__codelineno-27-16"></a><span class="s">EOF</span>
+<a id="__codelineno-27-17" name="__codelineno-27-17" href="#__codelineno-27-17"></a>
+<a id="__codelineno-27-18" name="__codelineno-27-18" href="#__codelineno-27-18"></a><span class="c1"># Set different permissions</span>
+<a id="__codelineno-27-19" name="__codelineno-27-19" href="#__codelineno-27-19"></a>chmod<span class="w"> </span><span class="m">444</span><span class="w"> </span>read_only.sh<span class="w">      </span><span class="c1"># r--r--r--</span>
+<a id="__codelineno-27-20" name="__codelineno-27-20" href="#__codelineno-27-20"></a>chmod<span class="w"> </span><span class="m">222</span><span class="w"> </span>write_only.sh<span class="w">     </span><span class="c1"># -w--w--w-</span>
+<a id="__codelineno-27-21" name="__codelineno-27-21" href="#__codelineno-27-21"></a>chmod<span class="w"> </span><span class="m">111</span><span class="w"> </span>execute_only.sh<span class="w">   </span><span class="c1"># --x--x--x</span>
+<a id="__codelineno-27-22" name="__codelineno-27-22" href="#__codelineno-27-22"></a>chmod<span class="w"> </span><span class="m">666</span><span class="w"> </span>read_write.sh<span class="w">     </span><span class="c1"># rw-rw-rw-</span>
+<a id="__codelineno-27-23" name="__codelineno-27-23" href="#__codelineno-27-23"></a>chmod<span class="w"> </span><span class="m">555</span><span class="w"> </span>read_execute.sh<span class="w">   </span><span class="c1"># r-xr-xr-x</span>
+<a id="__codelineno-27-24" name="__codelineno-27-24" href="#__codelineno-27-24"></a>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>test_permissions.sh<span class="w"> </span><span class="c1"># Make test script executable</span>
+<a id="__codelineno-27-25" name="__codelineno-27-25" href="#__codelineno-27-25"></a>
+<a id="__codelineno-27-26" name="__codelineno-27-26" href="#__codelineno-27-26"></a><span class="c1"># Run the test</span>
+<a id="__codelineno-27-27" name="__codelineno-27-27" href="#__codelineno-27-27"></a>./test_permissions.sh
+</code></pre></div>
+<p>The test script will:</p>
+<ol>
+<li>Check each file's permissions</li>
+<li>Compare them with expected permissions</li>
+<li>Show green ✓ for correct permissions</li>
+<li>Show red ✗ for incorrect permissions</li>
+<li>Explain what's wrong if permissions don't match</li>
+</ol>
+<p>This exercise helps you:</p>
+<ul>
+<li>Understand how to test file permissions programmatically</li>
+<li>See the effects of different permission combinations</li>
+<li>Learn how to verify if permissions match requirements</li>
+<li>Practice using chmod with different permission patterns</li>
+</ul>
+<h2 id="test-questions">Test Questions</h2>
+<ol>
+<li>How do you display your current username in the terminal?</li>
+<li>Which command shows all groups a user belongs to?</li>
+<li>What command provides the most detailed information about user ID and group memberships?</li>
+<li>How can you see who is currently logged into the system?</li>
+<li>What command shows both logged-in users and their current activities?</li>
+</ol>
 <h2 id="references">References</h2>
 <p>For further reading, consider the following resources:</p>
 <ul>
