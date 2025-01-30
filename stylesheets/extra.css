@@ -1,0 +1,92 @@
+.md-typeset .grid {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    grid-gap: 1rem;
+    margin: 1rem 0;
+}
+
+.md-typeset .grid.cards > :is(ul, ol) {
+    display: contents;
+}
+
+.md-typeset .grid.cards > :is(ul, ol) > li,
+.md-typeset .grid > .card {
+    border: .05rem solid var(--md-default-fg-color--lightest);
+    border-radius: .5rem;
+    display: block;
+    margin: 0;
+    padding: .8rem;
+    transition: border .25s,box-shadow .25s;
+}
+
+.md-typeset .grid.cards > :is(ul, ol) > li:focus-within,
+.md-typeset .grid.cards > :is(ul, ol) > li:hover,
+.md-typeset .grid > .card:focus-within,
+.md-typeset .grid > .card:hover {
+    border-color: var(--md-accent-fg-color);
+    box-shadow: var(--md-shadow-z2);
+}
+
+.md-typeset .grid.cards > :is(ul, ol) > li > hr {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.md-typeset .grid.cards > :is(ul, ol) > li > :first-child {
+    margin-top: 0;
+}
+
+.md-typeset .grid.cards > :is(ul, ol) > li > :last-child {
+    margin-bottom: 0;
+}
+
+.md-button {
+    margin-right: .5rem;
+    margin-top: .5rem;
+}
+
+/* Custom styles for home page */
+.center-align {
+    text-align: center;
+    margin: 2rem auto;
+}
+
+.feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.feature-item {
+    flex: 1 1 300px;
+    max-width: 400px;
+    padding: 1rem;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: .5rem;
+    margin: 0.5rem;
+}
+
+.feature-item:hover {
+    border-color: var(--md-accent-fg-color);
+    box-shadow: var(--md-shadow-z2);
+}
+
+.hero-image {
+    max-width: 200px;
+    margin: 2rem auto;
+    display: block;
+}
+
+/* Dark mode adjustments */
+[data-md-color-scheme="slate"] .md-typeset .grid.cards > :is(ul, ol) > li,
+[data-md-color-scheme="slate"] .md-typeset .grid > .card {
+    background-color: var(--md-default-bg-color--light);
+}
+
+/* Emoji size adjustment */
+.twemoji {
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: text-bottom;
+}
