@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#permission-management" class="md-skip">
+        <a href="#introduction-to-linux-file-permissions" class="md-skip">
           Skip to content
         </a>
       
@@ -470,36 +470,102 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#concept-explanation" class="md-nav__link">
+  <a href="#basic-concepts" class="md-nav__link">
     <span class="md-ellipsis">
-      Concept Explanation
+      Basic Concepts
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#parameter-explanation" class="md-nav__link">
+  <a href="#viewing-permissions" class="md-nav__link">
     <span class="md-ellipsis">
-      Parameter Explanation
+      Viewing Permissions
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#practical-examples" class="md-nav__link">
+  <a href="#changing-permissions" class="md-nav__link">
     <span class="md-ellipsis">
-      Practical Examples
+      Changing Permissions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Changing Permissions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symbolic-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Symbolic Method
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numeric-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Numeric Method
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-ownership" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing Ownership
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#test-questions" class="md-nav__link">
+  <a href="#exercises" class="md-nav__link">
     <span class="md-ellipsis">
-      Test Questions
+      Exercises
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
     </span>
   </a>
   
@@ -944,73 +1010,213 @@
   
 
 
-<h1 id="permission-management">Permission Management</h1>
-<p>This section will cover how to manage file and directory permissions in Linux, including the use of chmod, chown, and other related commands.</p>
-<h2 id="concept-explanation">Concept Explanation</h2>
-<p>Permission management refers to controlling user access to system resources. Linux uses users, groups, and permission bits to manage permissions.</p>
-<h2 id="parameter-explanation">Parameter Explanation</h2>
+<h1 id="introduction-to-linux-file-permissions">Introduction to Linux File Permissions</h1>
+<p>Understanding file permissions is crucial for managing a Linux system securely and effectively. This guide introduces the fundamental concepts, commands, practical examples, exercises with answers, and references to help beginners grasp Linux file permissions.</p>
+<h2 id="basic-concepts">Basic Concepts</h2>
+<p>In Linux, each file and directory has an associated set of permissions that determine who can read, write, or execute them. These permissions are defined for three categories:</p>
 <ul>
-<li><strong><code>chmod</code></strong>：Changes file permissions.</li>
-<li><code>u</code>：User permissions.</li>
-<li><code>g</code>：Group permissions.</li>
-<li><code>o</code>：Other user permissions.</li>
-<li><code>+</code>：Adds permissions.</li>
-<li><code>-</code>：Removes permissions.</li>
-<li><strong><code>chown</code></strong>：Changes the file owner.</li>
-<li><code>user</code>：New owner.</li>
-<li><code>group</code>：New group.</li>
+<li><strong>User (u)</strong>: The owner of the file.</li>
+<li><strong>Group (g)</strong>: A set of users who share access rights.</li>
+<li><strong>Others (o)</strong>: All other users.</li>
 </ul>
-<h2 id="practical-examples">Practical Examples</h2>
-<ol>
-<li><strong>Changing File Permissions with <code>chmod</code></strong>:</li>
-<li><strong>Command</strong>: <code>chmod u+x script.sh</code></li>
-<li><strong>Example</strong>: If you have a script named <code>script.sh</code> and you want to allow the user to execute it, use:
-     <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>chmod<span class="w"> </span>u+x<span class="w"> </span>script.sh
-</code></pre></div></li>
-<li>This command adds execute permission for the user who owns the file. You can verify the change with:
-     <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ls<span class="w"> </span>-l<span class="w"> </span>script.sh
-</code></pre></div></li>
+<p>The permissions are represented as a string of 10 characters, for example: <code>-rwxr-xr--</code>. Here's a breakdown:</p>
+<ul>
+<li>The first character indicates the type:</li>
+<li><code>-</code>: Regular file</li>
+<li><code>d</code>: Directory</li>
+<li><code>l</code>: Symbolic link</li>
+<li>The next nine characters are divided into three sets of three:</li>
+<li><strong>User permissions</strong>: <code>rwx</code> (read, write, execute)</li>
+<li><strong>Group permissions</strong>: <code>r-x</code> (read, execute)</li>
+<li><strong>Others permissions</strong>: <code>r--</code> (read)</li>
+</ul>
+<p>Each permission is represented by a character:
+- <code>r</code>: Read permission
+- <code>w</code>: Write permission
+- <code>x</code>: Execute permission
+- <code>-</code>: No permission</p>
+<h2 id="viewing-permissions">Viewing Permissions</h2>
+<p>To view the permissions of files and directories, use the <code>ls -l</code> command:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ls<span class="w"> </span>-l
+</code></pre></div>
+This command lists files and directories in the current directory along with their permissions, ownership, and other details.</p>
+<p>Output looks like:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>total 24
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>-rwxrwxrwx 1 1025 users 11357 Dec  9 23:21  LICENSE
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>-rw-r--r-- 1 1025 users  1841 Jan 30 21:15 &#39;LICENSE copy&#39;
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>-rwxrwxrwx 1 1025 users  4084 Jan 30 22:34  README.md
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>drwxrwxrwx 1 1025 users   102 Jan 30 22:15  docs
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>drwxrwxrwx 1 1025 users   140 Jan 30 20:26  experiment
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>-rw-r--r-- 1 1025 users  3699 Jan 30 22:26  mkdocs.yml
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>drwxrwxrwx 1 1025 users   174 Jan 30 22:31  site
+</code></pre></div>
+<h2 id="changing-permissions">Changing Permissions</h2>
+<p>The <code>chmod</code> (change mode) command is used to modify file and directory permissions. There are two methods to specify permissions: symbolic and numeric.</p>
+<h3 id="symbolic-method">Symbolic Method</h3>
+<p>The symbolic method uses letters to represent permissions and operations:</p>
+<ul>
 <li>
-<p>The output will show <code>x</code> in the user permission section (e.g., <code>-rwxr--r--</code>).</p>
+<p><code>u</code>: User</p>
 </li>
 <li>
-<p><strong>Changing File Owner with <code>chown</code></strong>:</p>
-</li>
-<li><strong>Command</strong>: <code>chown user:group file.txt</code></li>
-<li><strong>Example</strong>: To change the owner of <code>file.txt</code> to <code>user</code> and the group to <code>group</code>, execute:
-     <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo<span class="w"> </span>chown<span class="w"> </span>user:group<span class="w"> </span>file.txt
-</code></pre></div></li>
-<li>This command changes the ownership, which can be confirmed by listing the file details:
-     <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ls<span class="w"> </span>-l<span class="w"> </span>file.txt
-</code></pre></div></li>
-<li>
-<p>The output will reflect the new owner and group.</p>
+<p><code>g</code>: Group</p>
 </li>
 <li>
-<p><strong>Recursive Permission Change</strong>:</p>
-</li>
-<li><strong>Command</strong>: <code>chmod -R 755 /path/to/directory</code></li>
-<li><strong>Example</strong>: To set read, write, and execute permissions for the owner, and read and execute for others on all files and directories within <code>/path/to/directory</code>, use:
-     <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">755</span><span class="w"> </span>/path/to/directory
-</code></pre></div></li>
-<li>
-<p>This applies the permissions recursively to all contents within the directory.</p>
+<p><code>o</code>: Others</p>
 </li>
 <li>
-<p><strong>Changing Group Ownership</strong>:</p>
+<p><code>a</code>: All (user, group, and others)</p>
 </li>
-<li><strong>Command</strong>: <code>chown :group file.txt</code></li>
-<li><strong>Example</strong>: If you only want to change the group of <code>file.txt</code> to <code>group</code>, run:
-     <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>chown<span class="w"> </span>:group<span class="w"> </span>file.txt
-</code></pre></div></li>
-<li>This changes the group ownership while keeping the current user as the owner.</li>
-</ol>
-<h2 id="test-questions">Test Questions</h2>
-<ol>
-<li>How do you add read permission to a file?</li>
-<li>Which command is used to change the owner of a file?</li>
-<li>How do you view the permission information of a file?</li>
-</ol>
+</ul>
+<p>Operations:</p>
+<ul>
+<li>
+<p><code>+</code>: Add permission</p>
+</li>
+<li>
+<p><code>-</code>: Remove permission</p>
+</li>
+<li>
+<p><code>=</code>: Set exact permission</p>
+</li>
+</ul>
+<p>Examples:</p>
+<ul>
+<li>Add execute permission for the user:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>chmod<span class="w"> </span>u+x<span class="w"> </span>filename
+</code></pre></div>
+<ul>
+<li>Remove write permission for the group:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>chmod<span class="w"> </span>g-w<span class="w"> </span>filename
+</code></pre></div>
+<ul>
+<li>Set read and write permissions for all:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>chmod<span class="w"> </span><span class="nv">a</span><span class="o">=</span>rw<span class="w"> </span>filename
+</code></pre></div>
+<h3 id="numeric-method">Numeric Method</h3>
+<p>The numeric method uses octal numbers to represent permissions:</p>
+<ul>
+<li>
+<p><code>4</code>: Read</p>
+</li>
+<li>
+<p><code>2</code>: Write</p>
+</li>
+<li>
+<p><code>1</code>: Execute</p>
+</li>
+</ul>
+<p>Combine these values to set permissions. For example:</p>
+<ul>
+<li>
+<p><code>7</code> (4+2+1): Read, write, and execute</p>
+</li>
+<li>
+<p><code>6</code> (4+2): Read and write</p>
+</li>
+<li>
+<p><code>5</code> (4+1): Read and execute</p>
+</li>
+<li>
+<p><code>4</code>: Read only</p>
+</li>
+</ul>
+<p>The permissions are set in the order of user, group, and others. For example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>filename
+</code></pre></div>
+<p>This sets:</p>
+<ul>
+<li>
+<p>User: Read, write, execute (<code>7</code>)</p>
+</li>
+<li>
+<p>Group: Read, execute (<code>5</code>)</p>
+</li>
+<li>
+<p>Others: Read, execute (<code>5</code>)</p>
+</li>
+</ul>
+<h2 id="changing-ownership">Changing Ownership</h2>
+<p>The <code>chown</code> (change owner) command changes the ownership of a file or directory:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>chown<span class="w"> </span>user:group<span class="w"> </span>filename
+</code></pre></div>
+<ul>
+<li>
+<p><code>user</code>: New owner</p>
+</li>
+<li>
+<p><code>group</code>: New group</p>
+</li>
+</ul>
+<p>To change only the user or group:</p>
+<ul>
+<li>Change user:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>chown<span class="w"> </span>user<span class="w"> </span>filename
+</code></pre></div>
+<ul>
+<li>Change group:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>chown<span class="w"> </span>:group<span class="w"> </span>filename
+</code></pre></div>
+<h2 id="exercises">Exercises</h2>
+<p>Test your understanding with the following exercises:</p>
+<h3 id="exercise-1">Exercise 1</h3>
+<p>Create a file named <code>experiment/test.sh</code> with content</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;hello world&quot;</span>
+</code></pre></div>
+and set its permissions so that:
+  - The user can read, write, and execute.
+  - The group can read and execute.
+  - Others have no permissions.
+  - you (the user) can run the file by typing <code>bash experiment/test.sh</code> which returned "hello world"</p>
+<p>Try you self first and then check with the following soluction to compare the status of the file. Solution may not be unique</p>
+<p><strong>Solution:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Create the file</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>touch<span class="w"> </span>experiment/test.sh
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;echo &#39;hello world&#39; &gt; experiment/test.sh</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="s2">ls -l experiment/test.sh</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="s2">-rw-r--r-- 1 user group 0 Jan 30 22:49 experiment/test.sh    # Initial state</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="s2"># Add content to the file</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="s2"># Change permissions</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="s2">chmod 750 experiment/test.sh</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="s2">ls -l experiment/test.sh</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="s2">-rwxr-x--- 1 user group 11 Jan 30 22:49 experiment/test.sh   # Final state</span>
+</code></pre></div>
+<h3 id="exercise-2">Exercise 2</h3>
+<p>Change the group ownership of a directory
+1. Make a directory named <code>experiment/a</code> and a file named <code>test.sh</code> in it.
+2. change the group ownership of <code>experiment/a</code> to <code>editors</code></p>
+<p><strong>Solution:</strong></p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>chown<span class="w"> </span>:editors<span class="w"> </span>experiment/a
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>3. **Exercise 3**
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>Remove write permission for others from all files in the current directory.
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>**Solution:**
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>```bash
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>chmod o-w *
+</code></pre></div></p>
+<h2 id="references">References</h2>
+<p>For further reading, consider the following resources:</p>
+<ul>
+<li>
+<p><a href="">An Introduction to Linux Permissions</a></p>
+</li>
+<li>
+<p><a href="">Linux file permissions explained</a></p>
+</li>
+<li>
+<p><a href="">Practice Linux Permissions Basics with 13 Easy Questions [Part I]</a></p>
+</li>
+</ul>
+<p>Understanding and managing file permissions are fundamental skills for Linux users and administrators. Practice these commands and concepts to enhance your proficiency in handling Linux file systems securely.</p>
 
 
 
