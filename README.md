@@ -10,6 +10,8 @@
 
 This comprehensive guide will take you through the fundamentals of Linux system administration and Python programming. Whether you're a beginner or looking to strengthen your skills, we've got you covered!
 
+📚 **View the full documentation at: [https://tsiendragon.github.io/learning/index.html](https://tsiendragon.github.io/learning/index.html)**
+
 ## Course Structure
 
 ### Phase 1: Linux Basics 

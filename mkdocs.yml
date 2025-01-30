@@ -1,10 +1,14 @@
 site_name: "Learning Path: Linux and Python"
-use_directory_urls: true
+base_url: /learning/
+site_url: https://tsiendragon.github.io/learning/
+use_directory_urls: false
+repo_url: https://github.com/tsiendragon/learning
+
 docs_dir: docs
 site_dir: site
 
 nav:
-  - HOMEPAGE: overrides/index.html
+  - HOMEPAGE: index.html
   - Phase 1 - Linux Basics:
     - File System: book/phase1/linux_basics/01_linux_file_system.md
     - Permission Management: book/phase1/linux_basics/02_permission_management.md
@@ -94,22 +98,22 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.tabbed:
       alternate_style: true
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
-  - footnotes
-  - md_in_html
-  - attr_list
-  - pymdownx.arithmatex:
-      generic: true
+  # - pymdownx.tasklist:
+  #     custom_checkbox: true
+  # - pymdownx.tilde
+  # - footnotes
+  # - md_in_html
+  # - attr_list
+  # - pymdownx.arithmatex:
+  #     generic: true
 
-extra_javascript:
-  - javascripts/mathjax.js
+# extra_javascript:
+#   - javascripts/mathjax.js
 
-plugins:
-  - search
-  - minify:
-      minify_html: true
-  - git-revision-date-localized:
-      enable_creation_date: true
-  - tags
+# plugins:
+#   - search
+#   - minify:
+#       minify_html: true
+#   - git-revision-date-localized:
+#       enable_creation_date: true
+#   - tags

@@ -44,7 +44,9 @@
    ```bash
    mkdocs gh-deploy
    ```
-
+7. **github settup**
+![alt text](../images/image-6.png)
+In the setting of the project, click page section, you will see visit pages
 ## Additional Tips
 
 - Ensure your GitHub repository is set up to use GitHub Pages.
