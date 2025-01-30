@@ -207,7 +207,7 @@ Git Flow 是一个基于分支的软件开发工作流程，它定义了一组�
    git commit -m "Fix bug in feature B"
    ```
 
-2. 在 `xiaohong/feature/b` 上又有新的任务，但需要先回到 `xiaohong/feature/a` 上：
+2. 现在需要立即提交 `xiaohong/feature/a` 上的工作， 并完成手头 feature/b 的工作
 
    ```bash
    # xiaohong/feature/b 上的新工作
@@ -220,7 +220,11 @@ Git Flow 是一个基于分支的软件开发工作流程，它定义了一组�
    # 切回 xiaohong/feature/a 并恢复之前的工作
    git checkout xiaohong/feature/a
    git stash list  # 查看所有 stash
-   git stash pop   # 恢复最近的 stash（feature A 的工作）
+   git stash pop stash@{1}  # 恢复最近的 stash（feature A 的工作）
+   git status
+   >> ...
+   >>    modified: experiment/feature_a.txt
+   >> ...
 
    # 完成 xiaohong/feature/a 的工作并提交
    git add experiment/feature_a.txt
@@ -231,7 +235,10 @@ Git Flow 是一个基于分支的软件开发工作流程，它定义了一组�
 
    ```bash
    git checkout xiaohong/feature/b
+   git stash list
+   >>>stash@{0}" On xiaohong/feature/b: feature B new task"
    git stash pop   # 恢复 feature B 的工作
+   # changes 里面会出现 experiment/feature_b.txt
 
    # 完成 xiaohong/feature/b 的工作并提交
    git add experiment/feature_b.txt
