@@ -7,26 +7,26 @@ Git is a distributed version control system used to track changes in files and c
 
 ## Parameter Explanation
 
-- **`git init`**: Initializes a new Git repository.
-- **`git clone`**: Clones a remote repository.
-- **`git add`**: Adds files to the staging area.
-- **`git commit`**: Commits changes.
-  - `-m`: Adds a commit message.
-- **`git push`**: Pushes local commits to a remote repository.
+- 🏗️ **`git init`**: Initializes a new Git repository.
+- 📥 **`git clone`**: Clones a remote repository.
+- ➕ **`git add`**: Adds files to the staging area.
+- 💾 **`git commit`**: Commits changes.
+  - 📝 `-m`: Adds a commit message.
+- 🚀 **`git push`**: Pushes local commits to a remote repository.
 
 ## Practical Examples
 
-1. Use `git init` to initialize a new repository.
-2. Use `git clone <repo>` to clone a remote repository.
-3. Use `git add .` to add all changes to the staging area.
-4. Use `git commit -m "Initial commit"` to commit changes.
-5. Use `git push origin main` to push to a remote repository.
-6. 删除分支
-   🚀 **推荐做法**
-   1️⃣ **如果你只想删除远程分支** ：`git push origin --delete branch-name`
-   2️⃣ **如果你希望更新本地的远程分支列表** ：`git fetch --prune`
-   3️⃣ **如果你要删除 GitHub 远程分支** ：直接在 GitHub 的 "Branches" 页面删除
-   4️⃣ 如果删除的是 `main`** ：确保已创建新的 `main`，再执行删除操作
+1. 🎯 Use `git init` to initialize a new repository.
+2. 📦 Use `git clone <repo>` to clone a remote repository.
+3. ✨ Use `git add .` to add all changes to the staging area.
+4. 💫 Use `git commit -m "Initial commit"` to commit changes.
+5. 🔼 Use `git push origin main` to push to a remote repository.
+6. Delete Branches
+   🚀 **Recommended Practices**
+   1️⃣ **To delete only the remote branch**: `git push origin --delete branch-name`
+   2️⃣ **To update local remote branch list**: `git fetch --prune`
+   3️⃣ **To delete a GitHub remote branch**: Delete directly from GitHub's "Branches" page
+   4️⃣ **If deleting `main`**: Ensure a new `main` is created before executing the deletion
 
 ## Test Questions
 
@@ -41,12 +41,12 @@ Git 是一个分布式版本控制系统，用于跟踪文件的更改和协作�
 
 ### 参数的解释
 
-- **`git init`**：初始化一个新的 Git 仓库。
-- **`git clone`**：克隆远程仓库。
-- **`git add`**：添加文件到暂存区。
-- **`git commit`**：提交更改。
-  - `-m`：添加提交信息。
-- **`git push`**：推送本地提交到远程仓库。
+- 🏗️ **`git init`**：初始化一个新的 Git 仓库。
+- 📥 **`git clone`**：克隆远程仓库。
+- ➕ **`git add`**：添加文件到暂存区。
+- 💾 **`git commit`**：提交更改。
+  - 📝 `-m`：添加提交信息。
+- 🚀 **`git push`**：推送本地提交到远程仓库。
 - **`git merge --squash`**：将指定分支的更改合并到当前分支，但不自动创建合并提交。合并的更改会被暂存，用户需要手动创建提交。
 - **`git cherry-pick`**：从远程仓库中提取指定的提交并应用到本地。
 - **`git rebase`**：`git rebase` 是一个用于将一个分支的更改应用到另一个分支之上的命令。它常用于线性化提交历史，保持历史的简洁性和可读性。在使用 `git rebase` 时，Git 会把当前分支从其基础分支“移出”，并将其应用到新的基础之上。需要注意的是，rebase 会改变提交历史，因此在共享分支上使用时要谨慎。
@@ -58,7 +58,6 @@ Git 是一个分布式版本控制系统，用于跟踪文件的更改和协作�
 
 在使用 Git 进行版本控制时，文件会经历不同的状态。理解这些状态有助于高效管理代码，并避免丢失重要更改。本文将详细介绍 Git 的几种文件状态，并总结如何在命令行和 VSCode 中查看和操作它们。
 
-
 ---
 
 **Git 文件的几种状态**
@@ -67,21 +66,23 @@ Git 是一个分布式版本控制系统，用于跟踪文件的更改和协作�
 | --- | --- | --- | --- |
 | Untracked（未跟踪） | Git 未跟踪的新文件，未添加到暂存区 | git status | Source Control 面板，标记为 U（Untracked） |
 | Modified（已修改） | 已跟踪的文件被修改，但未添加到暂存区 | git status / git diff | Source Control 面板，标记为 M（Modified） |
-| Staged（已暂存） | 修改后的文件已添加到暂存区，等待提交 | git status / git diff --cached | Source Control 面板，出现在 Staged Changes 标记为A (Added)|
+| Staged（已暂存） | 修改后的文件已添加到暂存区，等待提交 | git status / git diff --cached | Source Control 面板，出现在 Staged Changes 标记为 A (Added) |
 | Committed（已提交） | 文件更改已提交到本地 Git 仓库 | git log / git show <commit-id> | Git History 扩展 或 GitLens |
 | Deleted（已删除） | 文件被删除但 Git 仍然跟踪它 | git status / git diff --cached | Source Control 面板，标记为 D（Deleted） |
 | Renamed（已重命名） | Git 识别到文件被重命名 | git status | Source Control 面板，标记为 R（Renamed） |
 | Ignored（已忽略） | .gitignore 中排除的文件，不被 Git 追踪 | git status --ignored / git check-ignore -v <file> | 默认不在 Source Control 中显示 |
 
-
 ---
 
-**Untracked vs Modified：两者的区别** **Untracked（未跟踪）**  和 **Modified（已修改）**  是 Git 初学者经常混淆的两个状态。
+**Untracked vs Modified：两者的区别**
+**Untracked（未跟踪）** 和 **Modified（已修改）** 是 Git 初学者经常混淆的两个状态。
 
 | 状态 | 是否被 Git 追踪？ | 是否已 git add？ | 是否已 git commit？ |
 | --- | --- | --- | --- |
 | Untracked（未跟踪） | ❌ 否 | ❌ 否 | ❌ 否 |
 | Modified（已修改） | ✅ 是 | ❌ 否 | ❌ 否 |
+
+---
 
 **举例说明**
 
@@ -98,36 +99,9 @@ Untracked files:
   (use "git add <file>..." to include in what will be committed)
     new_file.txt
 ```
-****Untracked 文件示例**
-
-```bash
-echo "Hello" > new_file.txt
-git status
-```
-**输出**
-
-```makefile
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-    new_file.txt
-```
 此时 `new_file.txt` 还没有被 Git 追踪。**
 
 - **Modified 文件示例**
-
-```bash
-git add new_file.txt
-git commit -m "Add new_file.txt"
-echo "New content" >> new_file.txt
-git status
-```
-**输出**
-
-```yaml
-Changes not staged for commit:
-  modified:   new_file.txt
-```
-****Modified 文件示例**
 
 ```bash
 git add new_file.txt
@@ -158,7 +132,6 @@ Changes not staged for commit:
 | Deleted → 还原删除 | git checkout -- <file> 或 git restore <file> | 右键文件，选择 Restore |
 | Ignored → 追踪文件 | 编辑 .gitignore 文件，删除对应规则 | 在 .gitignore 中移除对应文件规则 |
 
-
 ---
 
 **VSCode 中如何查看 Git 文件状态？**
@@ -186,8 +159,7 @@ Changes not staged for commit:
   - 选中已暂存的文件，输入提交信息后点击 **✓（提交）** 。
 
 5. **查看 Git 历史**
-  - 使用 **GitLens**  或 **Git Graph**  扩展插件，方便可视化历史提交和变更。
-
+  - 使用 **GitLens** 或 **Git Graph** 扩展插件，方便可视化历史提交和变更。
 
 ---
 
@@ -917,6 +889,7 @@ rm experiment/login.txt
 各种文件的状态
 ![alt text](../../docs/images/img_v3_02j1_6bf38427-29bd-4f0e-bb8a-818e43751feh.jpg)
 
+
 ```bash
 git reset HEAD~2  # 或 git reset --mixed HEAD~1
 git status
@@ -937,7 +910,7 @@ git status
 >>>        experiment/untracked.txt
 ```
 
-清除了staged 修改，但是其他的文件状态没有变化，staged 变成了 untracked或者 un-staged. user.txt 变成了un-staged, 因为user.txt 之前已经track过了。staged.txt 变成了untracked, 因为staged.txt 没有track过。register_func.txt 变成了untracked, 因为register_func.txt 没有track过, 因为register的commit 已经被撤回了，当前的commit 没有track 过register.txt 和register_func.txt，后者是从register.txt 重命名而来。
+清除了staged 修改，但是其他的文件状态没有变化，staged 变成了 un-staged. user.txt 变成了un-staged, 因为user.txt 之前已经track过了。staged.txt 变成了untracked, 因为staged.txt 没有track过。register_func.txt 变成了untracked, 因为register_func.txt 没有track过, 因为register的commit 已经被撤回了，当前的commit 没有track 过register.txt 和register_func.txt，后者是从register.txt 重命名而来。
 
 
 ####  使用 `git reset --hard`
@@ -1006,7 +979,7 @@ reset 之后只剩下两个commit，同时source control 只剩下untracked.txt
 
 - `--mixed`（默认）：**回退提交历史并清除暂存区** ，但**不影响工作区** 。适用于回退提交但保留代码修改，重新 `git add` 之后可以重新提交。
 
-- `--hard`：**回退提交历史、清除暂存区、重置工作区** ，即**完全恢复到指定提交的状态** ，已修改但未提交的更改会**被丢弃** （**慎用！** ）。
+- `--hard`：**回退提交历史、清除暂存区、重置工作区** ，即**完全恢复到指定提交的状态** ，已修改但未提交的更改会**被丢弃** （**慎用！** ）.
 
 
 ---
