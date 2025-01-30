@@ -28,12 +28,12 @@ Git is a distributed version control system used to track changes in files and c
 2. Which command is used to clone a remote repository?
 3. How do you commit changes and add a commit message?
 
-# Git 版本控制系统
+## Git 版本控制系统
 
-## 概念的解释
+### 概念的解释
 Git 是一个分布式版本控制系统，用于跟踪文件的更改和协作开发。
 
-## 参数的解释
+### 参数的解释
 
 - **`git init`**：初始化一个新的 Git 仓库。
 - **`git clone`**：克隆远程仓库。
@@ -47,7 +47,156 @@ Git 是一个分布式版本控制系统，用于跟踪文件的更改和协作�
 
 ![](https://miro.medium.com/v2/resize:fit:1100/format:webp/1*K4anH9QzRcPqLCv-7HyiCQ.png)
 
-## git flow best practice
+
+## Git 文件状态详解：从 Untracked 到 Committed
+
+在使用 Git 进行版本控制时，文件会经历不同的状态。理解这些状态有助于高效管理代码，并避免丢失重要更改。本文将详细介绍 Git 的几种文件状态，并总结如何在命令行和 VSCode 中查看和操作它们。
+
+
+---
+
+**Git 文件的几种状态**
+在 Git 中，文件的状态主要有以下几种：
+| 文件状态 | 说明 | 终端查看方式 | VSCode 查看方式 |
+| --- | --- | --- | --- |
+| Untracked（未跟踪） | Git 未跟踪的新文件，未添加到暂存区 | git status | Source Control 面板，标记为 U（Untracked） |
+| Modified（已修改） | 已跟踪的文件被修改，但未添加到暂存区 | git status / git diff | Source Control 面板，标记为 M（Modified） |
+| Staged（已暂存） | 修改后的文件已添加到暂存区，等待提交 | git status / git diff --cached | Source Control 面板，出现在 Staged Changes |
+| Committed（已提交） | 文件更改已提交到本地 Git 仓库 | git log / git show <commit-id> | Git History 扩展 或 GitLens |
+| Deleted（已删除） | 文件被删除但 Git 仍然跟踪它 | git status / git diff --cached | Source Control 面板，标记为 D（Deleted） |
+| Renamed（已重命名） | Git 识别到文件被重命名 | git status | Source Control 面板，标记为 R（Renamed） |
+| Ignored（已忽略） | .gitignore 中排除的文件，不被 Git 追踪 | git status --ignored / git check-ignore -v <file> | 默认不在 Source Control 中显示 |
+
+
+---
+
+**Untracked vs Modified：两者的区别** **Untracked（未跟踪）**  和 **Modified（已修改）**  是 Git 初学者经常混淆的两个状态。
+
+| 状态 | 是否被 Git 追踪？ | 是否已 git add？ | 是否已 git commit？ |
+| --- | --- | --- | --- |
+| Untracked（未跟踪） | ❌ 否 | ❌ 否 | ❌ 否 |
+| Modified（已修改） | ✅ 是 | ❌ 否 | ❌ 否 |
+
+**举例说明**
+
+- **Untracked 文件示例**
+
+```bash
+echo "Hello" > new_file.txt
+git status
+```
+**输出**
+
+```makefile
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+    new_file.txt
+```
+****Untracked 文件示例**
+
+```bash
+echo "Hello" > new_file.txt
+git status
+```
+**输出**
+
+```makefile
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+    new_file.txt
+```
+此时 `new_file.txt` 还没有被 Git 追踪。**
+
+- **Modified 文件示例**
+
+```bash
+git add new_file.txt
+git commit -m "Add new_file.txt"
+echo "New content" >> new_file.txt
+git status
+```
+**输出**
+
+```yaml
+Changes not staged for commit:
+  modified:   new_file.txt
+```
+****Modified 文件示例**
+
+```bash
+git add new_file.txt
+git commit -m "Add new_file.txt"
+echo "New content" >> new_file.txt
+git status
+```
+**输出**
+
+```yaml
+Changes not staged for commit:
+  modified:   new_file.txt
+```
+此时 `new_file.txt` 已被 Git 追踪，但内容被修改了。**
+
+
+---
+
+**如何转换文件状态？**
+
+| 目标状态 | Git 操作命令 | VSCode 操作方式 |
+| --- | --- | --- |
+| Untracked → Staged | git add <file> | 选中文件，点击 + |
+| Modified → Staged | git add <file> | 选中文件，点击 + |
+| Staged → Committed | git commit -m "message" | 输入提交信息后点击 ✓ |
+| Modified → Unmodified（撤销修改） | git restore <file> | 右键文件，选择 Discard Changes |
+| Staged → Modified（取消暂存） | git reset HEAD <file> | 右键文件，选择 Unstage |
+| Deleted → 还原删除 | git checkout -- <file> 或 git restore <file> | 右键文件，选择 Restore |
+| Ignored → 追踪文件 | 编辑 .gitignore 文件，删除对应规则 | 在 .gitignore 中移除对应文件规则 |
+
+
+---
+
+**VSCode 中如何查看 Git 文件状态？**
+
+1. **打开 Source Control（源代码管理）面板**
+  - 快捷键 `Ctrl+Shift+G`（Windows / Linux）或 `Cmd+Shift+G`（Mac）。
+
+  - 未跟踪、已修改、已暂存的文件会在面板中显示。
+
+2. **查看文件状态**
+  - **U（Untracked）** ：新文件，未添加到 Git。
+
+  - **M（Modified）** ：已修改但未暂存。
+
+  - **A（Added）** ：已添加到暂存区。
+
+  - **D（Deleted）** ：文件被删除。
+
+  - **R（Renamed）** ：文件被重命名。
+
+3. **点击文件查看更改**
+  - 直接点击文件可以看到 **修改前后对比（diff）** 。
+
+4. **提交更改**
+  - 选中已暂存的文件，输入提交信息后点击 **✓（提交）** 。
+
+5. **查看 Git 历史**
+  - 使用 **GitLens**  或 **Git Graph**  扩展插件，方便可视化历史提交和变更。
+
+
+---
+
+**总结**
+- **Untracked 文件是新的，Git 不跟踪，必须 `git add` 后才能管理。**
+
+- **Modified 文件是已经被 Git 跟踪的，但有新的修改未 `git add`。**
+
+- **Staged 文件已经 `git add`，等待 `git commit`。**
+
+- **Committed 文件已经提交到本地仓库，可以用 `git log` 查看历史。**
+
+- **在 VSCode 的 Source Control 面板中，可以直观地查看和管理 Git 文件状态。**
+
+## Git flow best practice
 ![git flow best practice](https://media.geeksforgeeks.org/wp-content/uploads/20240223193253/gitflow_diagram_gfg-660.png)
 
 Git Flow 是一个基于分支的软件开发工作流程，它定义了一组严格的分支操作规则。主要包含以下分支：
@@ -370,6 +519,7 @@ git checkout -b xiaohong/feature/register
 提交完merge request之后，小红的分支和main 保持一致。并且包含了zhangwei 的register功能。
 
 ### 4. git cherry-pick
+
 
 准备工作：首先创建并设置两个分支的内容。
 
