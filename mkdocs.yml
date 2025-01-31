@@ -29,6 +29,8 @@ nav:
     - Common Libraries: book/phase2/python_basics/04_common_libraries.md
     - Best Practices: book/phase2/python_basics/05_best_practices.md
     - Algorithms & Techniques: book/phase2/python_basics/06_algorithms_techniques.md
+  - Phase 2 - Leetcode:
+    - 16 three sum closest: book/phase2/leetcode/16_3sum_closest.md
   - Deployment Guide: book/mkdocs_deployment_guide.md
 
 theme:
