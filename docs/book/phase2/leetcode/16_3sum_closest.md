@@ -250,23 +250,27 @@ Space Complexity: O(1) as we only use two pointers
 Here are some closely related problems that use similar techniques:
 
 1. [15. 3Sum](https://leetcode.com/problems/3sum/)
+
    - Find all unique triplets that sum to zero
    - Uses same two-pointer technique
    - Similar time complexity O(n²)
    - Key difference: Finds exact sum of zero vs. closest sum to target
 
 2. [18. 4Sum](https://leetcode.com/problems/4sum/)
+
    - Extension to finding quadruplets that sum to target
    - Can be solved using similar approach with one more loop
    - Time complexity O(n³)
    - Shows how k-sum problems can be generalized
 
 3. [259. 3Sum Smaller](https://leetcode.com/problems/3sum-smaller/) (Premium)
+
    - Count triplets with sum less than target
    - Uses similar sorting + two-pointer approach
    - Shows how to modify the algorithm for different conditions
 
 4. [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
+
    - Simpler version using just two pointers
    - Good starting point for understanding the technique
    - Direct application of the two-pointer method used in 3Sum Closest
