@@ -2,78 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://tsiendragon.github.io/learning/book/mkdocs_deployment_guide.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
     </url>
     <url>
          <loc>https://tsiendragon.github.io/learning/book/phase1/linux_basics/01_linux_file_system.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
     </url>
     <url>
          <loc>https://tsiendragon.github.io/learning/book/phase1/linux_basics/02_permission_management.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
     </url>
     <url>
          <loc>https://tsiendragon.github.io/learning/book/phase1/linux_basics/03_network_basics.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
     </url>
     <url>
          <loc>https://tsiendragon.github.io/learning/book/phase1/linux_basics/04_text_editors.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
     </url>
     <url>
          <loc>https://tsiendragon.github.io/learning/book/phase1/linux_basics/05_shell_scripting.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
     </url>
     <url>
          <loc>https://tsiendragon.github.io/learning/book/phase1/linux_basics/06_git_version_control.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
     </url>
     <url>
          <loc>https://tsiendragon.github.io/learning/book/phase1/linux_basics/07_development_tools.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
     </url>
     <url>
          <loc>https://tsiendragon.github.io/learning/book/phase1/linux_basics/08_networking_remote_operations.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
     </url>
     <url>
          <loc>https://tsiendragon.github.io/learning/book/phase1/linux_basics/09_programming_environment.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
     </url>
     <url>
          <loc>https://tsiendragon.github.io/learning/book/phase1/linux_basics/10_performance_tuning.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
     </url>
     <url>
          <loc>https://tsiendragon.github.io/learning/book/phase1/linux_basics/11_containers_virtualization.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
     </url>
     <url>
          <loc>https://tsiendragon.github.io/learning/book/phase1/linux_basics/12_file_data_processing.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
+    </url>
+    <url>
+         <loc>https://tsiendragon.github.io/learning/book/phase2/leetcode/16_3sum_closest.html</loc>
+         <lastmod>2025-01-31</lastmod>
     </url>
     <url>
          <loc>https://tsiendragon.github.io/learning/book/phase2/python_basics/01_basic_syntax.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
     </url>
     <url>
          <loc>https://tsiendragon.github.io/learning/book/phase2/python_basics/02_functions_modules.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
     </url>
     <url>
          <loc>https://tsiendragon.github.io/learning/book/phase2/python_basics/03_classes_objects.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
     </url>
     <url>
          <loc>https://tsiendragon.github.io/learning/book/phase2/python_basics/04_common_libraries.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
     </url>
     <url>
          <loc>https://tsiendragon.github.io/learning/book/phase2/python_basics/05_best_practices.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
     </url>
     <url>
          <loc>https://tsiendragon.github.io/learning/book/phase2/python_basics/06_algorithms_techniques.html</loc>
-         <lastmod>2025-01-30</lastmod>
+         <lastmod>2025-01-31</lastmod>
     </url>
 </urlset>
