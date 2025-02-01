@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#4sum-a-deep-dive-into-array-manipulation" class="md-skip">
+        <a href="#leetcode-18-4sum" class="md-skip">
           Skip to content
         </a>
       
@@ -1179,7 +1179,7 @@
   
 
 
-<h1 id="4sum-a-deep-dive-into-array-manipulation">4Sum: A Deep Dive into Array Manipulation 🎯</h1>
+<h1 id="leetcode-18-4sum">LeetCode 18: 4Sum</h1>
 <h2 id="problem-overview">Problem Overview 🤔</h2>
 <p>The 4Sum problem is a classic array manipulation challenge that builds upon the concepts of Two Sum and Three Sum. Let's break down what we're trying to solve!</p>
 <p>Given an array <code>nums</code> of <code>n</code> integers and a <code>target</code> value, we need to find all unique quadruplets that sum up to the target. It's like finding four puzzle pieces that fit perfectly together! 🧩</p>
@@ -1192,10 +1192,12 @@
 <p>Let's explore different approaches to solve this problem, starting from a basic solution and gradually optimizing it. Each solution brings something unique to the table!</p>
 <h3 id="solution-1-recursive-approach-with-early-pruning">Solution 1: Recursive Approach with Early Pruning 🌳</h3>
 <p>Our first solution takes a recursive approach, breaking down the 4Sum problem into smaller subproblems. Think of it like a tree where each level represents one number in our quadruplet.</p>
-<p><strong>Key Insights:</strong>
-- 🔍 Sort the array first to handle duplicates and enable pruning
-- 🚫 Early pruning using sum checks
-- 🔄 Recursive reduction from 4Sum to 3Sum to 2Sum</p>
+<p><strong>Key Insights:</strong></p>
+<ul>
+<li>🔍 Sort the array first to handle duplicates and enable pruning</li>
+<li>🚫 Early pruning using sum checks</li>
+<li>🔄 Recursive reduction from 4Sum to 3Sum to 2Sum</li>
+</ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
@@ -1265,17 +1267,21 @@
 <a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a>    <span class="n">y</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">fourSum</span><span class="p">(</span><span class="n">nums</span><span class="o">=</span><span class="n">nums</span><span class="p">,</span><span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">)</span>
 <a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </code></pre></div>
-<p>This solution works by:
-1. 📊 Sorting the array first
-2. ✂️ Pruning impossible cases early (if smallest 4 sum &gt; target or largest 4 sum &lt; target)
-3. 🔁 Using recursion to break down the problem
-4. 🎯 Handling duplicates with set conversion</p>
+<p>This solution works by:</p>
+<ol>
+<li>📊 Sorting the array first</li>
+<li>✂️ Pruning impossible cases early (if smallest 4 sum &gt; target or largest 4 sum &lt; target)</li>
+<li>🔁 Using recursion to break down the problem</li>
+<li>🎯 Handling duplicates with set conversion</li>
+</ol>
 <h3 id="solution-2-optimizing-two-sum-with-early-return">Solution 2: Optimizing Two Sum with Early Return 🏃‍♂️</h3>
 <p>In our second solution, we made a key optimization in the two_sum function. By adding an early return when we find a match, we can speed up the process significantly!</p>
-<p><strong>What Changed:</strong>
-- ⚡ Added <code>j -= 1</code> for faster traversal
-- 🎯 Early return on match
-- 🔄 Maintained the same overall structure</p>
+<p><strong>What Changed:</strong></p>
+<ul>
+<li>⚡ Added <code>j -= 1</code> for faster traversal</li>
+<li>🎯 Early return on match</li>
+<li>🔄 Maintained the same overall structure</li>
+</ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>    <span class="k">def</span> <span class="nf">two_sum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>        <span class="c1"># assume nums is sorted</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
@@ -1304,10 +1310,12 @@
 <img alt="alt text" src="../../../images/image-10.png" /></p>
 <h3 id="solution-3-smart-duplicate-handling">Solution 3: Smart Duplicate Handling 🧠</h3>
 <p>Our third solution introduces smart duplicate handling, which significantly improves performance by skipping redundant calculations.</p>
-<p><strong>Key Improvements:</strong>
-- 🏃‍♂️ Skip duplicate values
-- 🎯 More efficient pointer movement
-- 💡 Smarter comparison logic</p>
+<p><strong>Key Improvements:</strong></p>
+<ul>
+<li>🏃‍♂️ Skip duplicate values</li>
+<li>🎯 More efficient pointer movement</li>
+<li>💡 Smarter comparison logic</li>
+</ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>    <span class="k">def</span> <span class="nf">two_sum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>        <span class="c1"># assume nums is sorted</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
@@ -1338,11 +1346,13 @@
 <img alt="alt text" src="../../../images/image-11.png" /></p>
 <h3 id="solution-4-the-ultimate-optimization">Solution 4: The Ultimate Optimization 🏆</h3>
 <p>Finally, we reached our most optimized solution using recursion with smart pruning and efficient duplicate handling.</p>
-<p><strong>Advanced Features:</strong>
-- 🚀 Early termination conditions
-- 🎯 Smart pointer management
-- 🔄 Efficient recursive approach
-- 🧮 Optimized memory usage</p>
+<p><strong>Advanced Features:</strong></p>
+<ul>
+<li>🚀 Early termination conditions</li>
+<li>🎯 Smart pointer management</li>
+<li>🔄 Efficient recursive approach</li>
+<li>🧮 Optimized memory usage</li>
+</ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">class</span> <span class="nc">Solution5</span><span class="p">:</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="k">def</span> <span class="nf">fourSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>        <span class="k">def</span> <span class="nf">findNsum</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
@@ -1381,12 +1391,14 @@
 <p>Final performance results:
 <img alt="alt text" src="../../../images/image-12.png" /></p>
 <h2 id="time-complexity-analysis">Time Complexity Analysis 📊</h2>
-<p>Let's break down the complexity of our solutions:
-- Base Solution: O(n³) - Three nested loops with binary search
-- Optimized Solution: Still O(n³) but with much better constant factors due to:
-  - Early pruning 🚫
-  - Duplicate skipping ⏭️
-  - Smart pointer management 👆</p>
+<p>Let's break down the complexity of our solutions:</p>
+<ul>
+<li>Base Solution: O(n³) - Three nested loops with binary search</li>
+<li>Optimized Solution: Still O(n³) but with much better constant factors due to:</li>
+<li>Early pruning 🚫</li>
+<li>Duplicate skipping ⏭️</li>
+<li>Smart pointer management 👆</li>
+</ul>
 <h2 id="key-takeaways">Key Takeaways 💡</h2>
 <ol>
 <li><strong>Early Pruning</strong> is crucial for performance</li>
