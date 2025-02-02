@@ -6,7 +6,7 @@ Regular Expression Matching is a fascinating pattern matching challenge that tes
 
 ### Problem Constraints
 
-```
+```python
 1 <= s.length <= 20
 1 <= p.length <= 20
 s contains only lowercase English letters
