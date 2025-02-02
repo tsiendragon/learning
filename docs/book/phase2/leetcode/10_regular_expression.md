@@ -69,6 +69,165 @@ This approach, however, may exceed time limits for large inputs.
 
 ![alt text](../../../images/image-15.png)
 
+```
+class Solution:
+    """
+
+        # if has more than two consecutive chars in p, means a must in s
+        # *ab*, .ab*, a. all indicate a must be in s two consecutive chars in p, "." also consider as char
+        # otherwise, p should be like z*b*c*d*.*e*,
+
+    """
+    def isMatch(self, s: str, p: str) -> bool:
+        return self.is_match(s, p)
+
+    def solve_edge_case(self, s,p):
+        if len(p)==0:
+            return len(s)==0
+        if len(p)==1:
+            return len(s)==1 and (s==p or p==".")
+        if len(p)==2: #
+            if p[0]==".":
+                if p == ".*":
+                    return True
+                elif p=="..":
+                    return len(s)==2
+                else:
+                    return len(s)==len(p) and s[1]==p[1]
+            elif p[0]=="*":
+                raise Exception("There should be a previous valid char")
+            else: # p[0]=a
+                if p[1]==".": # p = a.
+                    return len(s)>=1 and s[0]==p[0] and len(s)==2
+                elif p[1]=="*":  #p= a*, s must be aaaaa
+                    # empty string or s[0]==p[0], s[i]==s[0] for all i
+                    return s=="" or set(s).issubset(set(p[:1]))
+                else: # p=aa
+                    return s==p
+        if len(s)==0:
+            # p must be empty or a*b*...c*
+            print('s=0',s,p)
+            return len(p)==0 or (len(p)%2==0 and set(p[1::2])==set(["*"]))
+        elif len(s)==1:
+            # s=a, p = a,  a*,a*b*,a*c*,a*d*,...,an*, .*
+            if p==s:
+                return True
+            elif p[-1] not in  "*.":
+                if p[-1]!=s:
+                    return False
+                else:
+                    return self.is_match("", p[:-1])
+            elif p[-1]=="*" and p[-2]!=s: # p=a*b*
+                return self.is_match(s, p[:-2])
+            elif p[-1]=="*" and p[-2]==s:
+                x1 = self.is_match(s, p[:-2])
+                x2 = self.is_match("", p)
+                print("len(s)==1", x1, s, p[:-2], x2, "",p)
+                return x1 or x2
+            elif p[-1]==".":
+                return self.is_match("", p[:-1])
+        return s, p
+
+    def is_match(self, s, p):
+        if "*" not in p and "." not in p:
+            return self.is_match_no_star_and_dot(s,p)
+        if "*" not in p:
+            return self.is_match_only_dot(s,p)
+        out = self.solve_edge_case(s,p)
+        if isinstance(out, bool):
+            return out
+        else:
+            s, p = out
+        n_old = len(p)
+        n = n_old+1
+        while n_old < n:
+            n = n_old
+            out= self.reduce_normal_char_prefix_surfix(s, p)
+            print('out',out,'s,p', s,p)
+            if isinstance(out, bool):
+                return out
+            else:
+                s, p = out
+
+
+            n_old = len(p)
+
+        # p = self.reduce_p(p)
+        if len(s)<=1 or len(p)<=2:
+            return self.is_match(s,p)
+        else:
+            return self.is_match_by_prefix_surfix(s, p)
+
+    def is_match_by_prefix_surfix(self,s, p):
+        # p: begin [a*, .*], end with [a*, .*]
+        assert p[1]=="*" and p[-1]=="*", "p should be begin [a*, .*], end with [a*, .*]"
+        # devide into two cases: a* = "" or a*=aa*
+        print('prefix', 's',s,'p',p)
+        if p[0]!=s[0] and p[0]!=".": # s = a? p= b*
+            return self.is_match(s, p[2:])
+
+        if p[-2]!="." and p[-2]!=s[-1]: # s= "ab", p ="?c*"
+            return self.is_match(s, p[:-2])
+
+        x1 = self.is_match(s, p[2:]) # a*=""
+        print('x1', s, p[2:])
+        x2 = self.is_match(s[1:], p) # a*=aa*
+        print("x2", s[1:], p)
+        return x1 or x2
+
+    def is_match_only_dot(self, s,p):
+        # p only contains .
+        if len(p)==len(s):
+            for si,pi in zip(s,p):
+                if pi != "." and pi != si:
+                    return False
+            return True
+        return False
+
+    def is_match_no_star_and_dot(self,s,p):
+        # no * and . in p
+        return s==p
+
+    def reduce_normal_char_prefix_surfix(self, s, p):
+        # assume len(p)>=3
+        # all possible for begin [aa, a*, a., .a, .*,.., *a, **, *.]
+
+        if p[0]=="*": # removed *a, **, *.
+            raise ValueError("p[0] cannot be *")
+        if len(p)<=2 or len(s)<=1:
+            return self.solve_edge_case(s,p)
+        if p[0] == "." and p[1] !="*":
+            s = s[1:]
+            p = p[1:] # removed .a, ..
+        # left [aa, a*, a., .*,]
+        if p[0] not in '.*' and p[1]!="*":
+            print('p[0]', 's',s, 'p',p)
+            if p[0]!=s[0]:
+                return False
+            else:
+                s = s[1:]
+                p = p[1:]
+            # remove aa, a.
+        # left [a*, .*]
+
+        # consider last two # all possible [aa, a*, a., .a, .*,.., *a, **, *.]
+        if "**" in p:
+            raise ValueError("Cannot have ** in p")
+        if p[-1] not in '.*':
+            if p[-1]!=s[-1]:
+                return False
+            else:
+                s = s[:-1]
+                p = p[:-1]
+            # remove .a, *a, aa
+        if p[-1] == ".":
+            s = s[:-1]
+            p = p[:-1]
+            # remove a., *., ..
+        # left [a*, ,.*]
+        return s, p
+```
+
 This solution improves upon the recursive approach by handling edge cases more efficiently. Let's break down how it works!
 
 **Key Optimizations:**
