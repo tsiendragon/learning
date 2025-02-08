@@ -33,6 +33,8 @@ nav:
     - 10 regular expression: book/phase2/leetcode/10_regular_expression.md
     - 16 three sum closest: book/phase2/leetcode/16_3sum_closest.md
     - 18 four sum: book/phase2/leetcode/18_4sum.md
+    - Linked List Easy: book/phase2/leetcode/linked_list_easy.md
+    - Linked List Medium: book/phase2/leetcode/linked_list_medium.md
   - Deployment Guide: book/mkdocs_deployment_guide.md
 
 theme:
